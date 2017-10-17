@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using XamlU.Demo.GitHubLibrary;
 using XamlU.Demo.GitHubLibrary.Models;
 using Windows.Security.Authentication.Web;
 using Windows.Foundation;
 using System.Runtime.CompilerServices;
-using XamlU.Demo.GitHubLibrary;
-using XamlU.Demo.GitHubLibrary.Models;
 
 namespace OneDayWorkshop01.Services
 {
