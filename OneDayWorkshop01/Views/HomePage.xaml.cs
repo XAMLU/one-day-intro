@@ -51,11 +51,13 @@ namespace OneDayWorkshop01.Views
                 UserNameTextBlock.Text = string.Format(UserNameTextBlock.Text, user.name);
                 LoggedInUI.Visibility = Visibility.Visible;
                 LoggedOutUI.Visibility = Visibility.Collapsed;
+                WaitUI.Visibility = Visibility.Collapsed;
             }
             else
             {
                 LoggedInUI.Visibility = Visibility.Collapsed;
                 LoggedOutUI.Visibility = Visibility.Visible;
+                WaitUI.Visibility = Visibility.Collapsed;
             }
         }
 
