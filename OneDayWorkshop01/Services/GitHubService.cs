@@ -35,7 +35,7 @@ namespace OneDayWorkshop01.Services
         public async Task<IEnumerable<(Owner Owner, string Repository)>> SearchRepositoriesAsync(string query)
         {
             ThrowIfNotAuthenticated();
-            return (await _gitHubClient.SearchRespositoriesAsync(query)).items.Select(x => (x.owner, x.name));
+            return (await _gitHubClient.SearchRespositoriesAsync(query)).items.Select(x => (x.owner, x.full_name));
         }
 
         public async Task<GitHubRepository> GetRepositoryAsync(Owner owner, string repository)

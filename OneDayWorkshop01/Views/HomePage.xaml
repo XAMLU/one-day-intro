@@ -4,7 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:OneDayWorkshop01.ViewModels"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewmodels:HomePageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
 
@@ -15,6 +20,11 @@
 
         <TextBlock Text="Home Page" Style="{StaticResource HeaderTextBlockStyle}" />
 
+        <StackPanel Grid.Row="1" x:Name="WaitUI" Visibility="Visible">
+            <ProgressBar IsIndeterminate="True" />
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
+        </StackPanel>
+
         <StackPanel Grid.Row="1" x:Name="LoggedOutUI" Visibility="Collapsed">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
             <Button Content="Login now" Click="Login_Clicked" />
@@ -22,11 +32,14 @@
 
         <StackPanel Grid.Row="1" x:Name="LoggedInUI" Visibility="Collapsed">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="Welcome, {0}" />
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" x:Name="WaitUI" Visibility="Visible">
-            <ProgressBar IsIndeterminate="True" />
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
+            <ListView ItemsSource="{x:Bind ViewModel.Results}">
+                <ListView.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Header="Search" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Content="Search" Command="{x:Bind ViewModel.SearchCommand}" />
+                    </StackPanel>
+                </ListView.Header>
+            </ListView>
         </StackPanel>
 
     </Grid>
