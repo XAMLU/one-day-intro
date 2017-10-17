@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="OneDayWorkshop01.Views.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneDayWorkshop01.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <NavigationView x:Name="MainNavigationView" SelectionChanged="NavigationView_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItemHeader Content="Repository" />
+            <NavigationViewItem x:Name="CodeButton" Icon="Add" Content="Code" />
+            <NavigationViewItem x:Name="IssuesButton" Icon="Add" Content="Issues" />
+            <NavigationViewItem x:Name="PullButton" Icon="Add" Content="Pull Requests" />
+        </NavigationView.MenuItems>
+        <Frame x:Name="NavigationFrame" />
+    </NavigationView>
+</Page>
