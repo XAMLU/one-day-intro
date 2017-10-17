@@ -10,6 +10,7 @@
     <NavigationView x:Name="MainNavigationView" SelectionChanged="NavigationView_SelectionChanged">
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Repository" />
+            <NavigationViewItem x:Name="HomeButton" Icon="Home" Content="Home" />
             <NavigationViewItem x:Name="CodeButton" Icon="Add" Content="Code" />
             <NavigationViewItem x:Name="IssuesButton" Icon="Add" Content="Issues" />
             <NavigationViewItem x:Name="PullButton" Icon="Add" Content="Pull Requests" />

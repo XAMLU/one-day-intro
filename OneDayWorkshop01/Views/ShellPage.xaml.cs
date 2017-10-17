@@ -21,8 +21,14 @@ namespace OneDayWorkshop01.Views
         public ShellPage()
         {
             InitializeComponent();
+            Loaded += ShellPage_Loaded;
             NavigationFrame.Navigated += NavigationFrame_Navigated;
             SystemNavigationManager.GetForCurrentView().BackRequested += ShellPage_BackRequested;
+        }
+
+        private void ShellPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainNavigationView.SelectedItem = HomeButton;
         }
 
         private void ShellPage_BackRequested(object sender, BackRequestedEventArgs e)
@@ -32,18 +38,11 @@ namespace OneDayWorkshop01.Views
 
         private void NavigationFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            if (NavigationFrame.CanGoBack)
-            {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility
-                    = AppViewBackButtonVisibility.Visible;
-            }
-            else
-            {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility
-                    = AppViewBackButtonVisibility.Collapsed;
-            }
             switch (NavigationFrame.Content)
             {
+                case HomePage p:
+                    MainNavigationView.SelectedItem = HomeButton;
+                    break;
                 case CodePage p:
                     MainNavigationView.SelectedItem = CodeButton;
                     break;
@@ -55,6 +54,9 @@ namespace OneDayWorkshop01.Views
                     break;
                 case IssuesPage p:
                     MainNavigationView.SelectedItem = IssuesButton;
+                    break;
+                default:
+                    UpdateBackButton();
                     break;
             }
         }
@@ -69,18 +71,36 @@ namespace OneDayWorkshop01.Views
             {
                 switch ((args.SelectedItem as NavigationViewItem).Name)
                 {
-                    case nameof(CodeButton) when (!(NavigationFrame.Content is CodePage)):
+                    case nameof(HomeButton) when !(NavigationFrame.Content is HomePage):
+                        NavigationFrame.Navigate(typeof(HomePage));
+                        break;
+                    case nameof(CodeButton) when !(NavigationFrame.Content is CodePage):
                         NavigationFrame.Navigate(typeof(CodePage));
                         break;
-                    case nameof(IssuesButton) when (!(NavigationFrame.Content is IssuesPage)):
+                    case nameof(IssuesButton) when !(NavigationFrame.Content is IssuesPage):
                         NavigationFrame.Navigate(typeof(IssuesPage));
                         break;
-                    case nameof(PullButton) when (!(NavigationFrame.Content is PullPage)):
+                    case nameof(PullButton) when !(NavigationFrame.Content is PullPage):
                         NavigationFrame.Navigate(typeof(PullPage));
                         break;
                 }
             }
             NavigationFrame.BackStack.Clear();
+            UpdateBackButton();
+        }
+
+        private void UpdateBackButton()
+        {
+            if (NavigationFrame.CanGoBack)
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility
+                    = AppViewBackButtonVisibility.Visible;
+            }
+            else
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility
+                    = AppViewBackButtonVisibility.Collapsed;
+            }
         }
     }
 }
