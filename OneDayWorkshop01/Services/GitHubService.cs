@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GitHubUwpDemo1;
-using GitHubUwpDemo1.Models;
+using XamlU.Demo.GitHubLibrary;
+using XamlU.Demo.GitHubLibrary.Models;
 using Windows.Security.Authentication.Web;
 using Windows.Foundation;
 using System.Runtime.CompilerServices;
+using XamlU.Demo.GitHubLibrary;
+using XamlU.Demo.GitHubLibrary.Models;
 
 namespace OneDayWorkshop01.Services
 {
@@ -27,22 +29,22 @@ namespace OneDayWorkshop01.Services
 
         static GitHubClient _gitHubClient;
 
-        public GitHubUser GetUser()
+        public async Task<GitHubUser> GetUserAsync()
         {
             ThrowIfNotAuthenticated();
-            return _gitHubClient.GetUserDetails();
+            return await _gitHubClient.GetUserDetailsAsync();
         }
 
-        public IEnumerable<(Owner Owner, string Repository)> SearchRepositories(string query)
+        public async Task<IEnumerable<(Owner Owner, string Repository)>> SearchRepositoriesAsync(string query)
         {
             ThrowIfNotAuthenticated();
-            return _gitHubClient.SearchRespositories(query).items.Select(x => (x.owner, x.name));
+            return (await _gitHubClient.SearchRespositoriesAsync(query)).items.Select(x => (x.owner, x.name));
         }
 
-        public GitHubRepository GetRepository(Owner owner, string repository)
+        public async Task<GitHubRepository> GetRepositoryAsync(Owner owner, string repository)
         {
             ThrowIfNotAuthenticated();
-            return _gitHubClient.GetRepository(owner, repository);
+            return await _gitHubClient.GetRepositoryAsync(owner, repository);
         }
 
         private void ThrowIfNotAuthenticated([CallerMemberName]string source = null)
@@ -89,7 +91,7 @@ namespace OneDayWorkshop01.Services
                     var resultAsUri = new Uri(webAuthResult.ResponseData);
                     var names = new WwwFormUrlDecoder(resultAsUri.Query);
                     var code = names.Single(x => x.Name == "code").Value;
-                    await _gitHubClient.GetTokenFromCode(code);
+                    await _gitHubClient.GetTokenFromCodeAsync(_settingsService.GithubClientId, _settingsService.GithubSecret, code);
                     return IsAuthenticated = true;
                 case WebAuthenticationStatus.ErrorHttp:
                     throw new Exception(webAuthResult.ResponseErrorDetail.ToString());

@@ -1,5 +1,5 @@
-﻿using GitHubUwpDemo1;
-using GitHubUwpDemo1.Models;
+﻿using XamlU.Demo.GitHubLibrary;
+using XamlU.Demo.GitHubLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,7 +47,7 @@ namespace OneDayWorkshop01.Views
             }
             if (loggedin)
             {
-                var user = _gitHubService.GetUser();
+                var user = await _gitHubService.GetUserAsync();
                 UserNameTextBlock.Text = string.Format(UserNameTextBlock.Text, user.name);
                 LoggedInUI.Visibility = Visibility.Visible;
                 LoggedOutUI.Visibility = Visibility.Collapsed;
