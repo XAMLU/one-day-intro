@@ -16,7 +16,7 @@
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <StackPanel Margin="32,8">
+        <StackPanel Margin="32">
             <TextBlock Text="{x:Bind ViewModel.Version}" Margin="0,0,0,16" />
             <Button Content="Clear default repository setting" Command="{x:Bind ViewModel.ClearDefaultCommand}" />
         </StackPanel>
