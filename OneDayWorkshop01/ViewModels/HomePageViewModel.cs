@@ -53,10 +53,10 @@ namespace OneDayWorkshop01.ViewModels
             return !string.IsNullOrEmpty(SearchQuery);
         }
 
-        public ObservableCollection<(Owner Owner, string Repository)> Results { get; } = new ObservableCollection<(Owner Owner, string Repository)>();
+        public ObservableCollection<string> Results { get; } = new ObservableCollection<string>();
 
-        private (Owner Owner, string Repository) _selectedRespository;
-        public (Owner Owner, string Repository) SelectedRepository
+        private string _selectedRespository;
+        public string SelectedRepository
         {
             get => _selectedRespository;
             set
@@ -77,7 +77,7 @@ namespace OneDayWorkshop01.ViewModels
         }
         private bool MakeDefaultCanExecute()
         {
-            return !SelectedRepository.Equals((null, null));
+            return !string.IsNullOrWhiteSpace(SelectedRepository);
         }
     }
 }
