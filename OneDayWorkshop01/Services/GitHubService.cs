@@ -32,10 +32,10 @@ namespace OneDayWorkshop01.Services
             return await _gitHubClient.GetUserDetailsAsync();
         }
 
-        public async Task<IEnumerable<string>> SearchRepositoriesAsync(string query)
+        public async Task<IEnumerable<SearchRepositoriesItem>> SearchRepositoriesAsync(string query)
         {
             ThrowIfNotAuthenticated();
-            return (await _gitHubClient.SearchRespositoriesAsync(query)).items.Select(x =>x.full_name);
+            return (await _gitHubClient.SearchRespositoriesAsync(query))?.items;
         }
 
         public async Task<GitHubRepository> GetRepositoryAsync(string repositoryFullName)

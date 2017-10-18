@@ -19,8 +19,12 @@ namespace OneDayWorkshop01.ViewModels
 
         public HomePageViewModel()
         {
-            _githubService = new Services.GitHubService();
-            _settingService = new Services.SettingsService();
+            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled
+                || !Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
+            {
+                _githubService = new GitHubService();
+                _settingService = new SettingsService();
+            }
         }
 
         private string _searchQuery;
@@ -53,10 +57,11 @@ namespace OneDayWorkshop01.ViewModels
             return !string.IsNullOrEmpty(SearchQuery);
         }
 
-        public ObservableCollection<string> Results { get; } = new ObservableCollection<string>();
+        public ObservableCollection<SearchRepositoriesItem> Results { get; }
+            = new ObservableCollection<SearchRepositoriesItem>();
 
-        private string _selectedRespository;
-        public string SelectedRepository
+        private SearchRepositoriesItem _selectedRespository;
+        public SearchRepositoriesItem SelectedRepository
         {
             get => _selectedRespository;
             set
@@ -73,11 +78,18 @@ namespace OneDayWorkshop01.ViewModels
         }
         private void MakeDefaultExecute()
         {
-            _settingService.DefaultRepository = SelectedRepository;
+            DefaultRepository = _settingService.DefaultRepository = SelectedRepository.full_name;
         }
         private bool MakeDefaultCanExecute()
         {
-            return !string.IsNullOrWhiteSpace(SelectedRepository);
+            return !string.IsNullOrWhiteSpace(SelectedRepository?.full_name);
+        }
+
+        private string _defaultRepository;
+        public string DefaultRepository
+        {
+            get => _settingService.DefaultRepository ?? "None";
+            set => Set(ref _defaultRepository, value);
         }
     }
 }

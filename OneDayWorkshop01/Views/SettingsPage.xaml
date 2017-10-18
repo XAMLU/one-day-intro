@@ -5,10 +5,26 @@
     xmlns:local="using:OneDayWorkshop01.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:OneDayWorkshop01.ViewModels"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
-        <TextBlock Text="Settings Page" Style="{StaticResource HeaderTextBlockStyle}" />
+    <Page.DataContext>
+        <viewmodels:SettingsPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Settings Page" Style="{StaticResource HeaderTextBlockStyle}" Margin="32" />
+
+        <StackPanel Grid.Row="1" Margin="32,8">
+            <TextBlock Text="{x:Bind ViewModel.Version}" Margin="0,0,0,16" />
+            <Button Content="Clear default repository setting" Command="{x:Bind ViewModel.ClearDefaultCommand}" />
+        </StackPanel>
+        
     </Grid>
 </Page>

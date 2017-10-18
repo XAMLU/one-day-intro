@@ -1,11 +1,16 @@
-﻿<Page
+﻿<Page   
     x:Class="OneDayWorkshop01.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:OneDayWorkshop01.ViewModels"
+    xmlns:converters="using:OneDayWorkshop01.Converters"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:CollapsedWhenNullConverter x:Name="CollapsedWhenNullConverter" />
+    </Page.Resources>
 
     <Page.DataContext>
         <viewmodels:HomePageViewModel x:Name="ViewModel" />
@@ -32,14 +37,101 @@
 
         <StackPanel Grid.Row="1" x:Name="LoggedInUI" Visibility="Collapsed">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="Welcome, {0}" />
-            <ListView ItemsSource="{x:Bind ViewModel.Results}">
+
+            <StackPanel Orientation="Horizontal" Margin="0,16">
+                <TextBox Header="Find a repository" PlaceholderText="XAMLU" Width="200" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Content="Search" VerticalAlignment="Bottom" Command="{x:Bind ViewModel.SearchCommand}" Margin="16,0" />
+                <TextBlock VerticalAlignment="Bottom">
+                    <Run Text="Current default repo:" />
+                    <LineBreak />
+                    <Run Text="{x:Bind ViewModel.DefaultRepository, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+
+            <ListView DisplayMemberPath="full_name" MaxHeight="240" 
+                      ItemsSource="{x:Bind ViewModel.Results}" SelectedItem="{x:Bind ViewModel.SelectedRepository, Mode=TwoWay}">
                 <ListView.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Header="Search" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <Button Content="Search" Command="{x:Bind ViewModel.SearchCommand}" />
-                    </StackPanel>
+                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5">
+                        <Run Text="Current result count:" />
+                        <Run Text="{Binding Results.Count}" />
+                    </TextBlock>
                 </ListView.Header>
             </ListView>
+
+
+            <RelativePanel Visibility="{x:Bind ViewModel.SelectedRepository, Mode=OneWay, Converter={StaticResource CollapsedWhenNullConverter}}" 
+                           Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
+
+                <RelativePanel.Background>
+                    <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />
+                </RelativePanel.Background>
+
+                <TextBlock x:Name="RepoName" Text="{Binding name}"
+                                   Style="{StaticResource TitleTextBlockStyle}"
+                                   RelativePanel.RightOf="RepoOwnerPic" />
+                <HyperlinkButton x:Name="RepoUrl" NavigateUri="{Binding html_url}" Content="{Binding html_url}" Margin="0,0,0,16"
+                                   RelativePanel.AlignLeftWith="RepoName"
+                                   RelativePanel.Below="RepoName" />
+                <TextBlock x:Name="RepoDescription" Text="{Binding description}"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   RelativePanel.Below="RepoUrl"
+                                   RelativePanel.AlignRightWithPanel="True"
+                                   RelativePanel.AlignLeftWith="RepoName" />
+
+                <Image Source="/Assets/git-issue.png" Width="32" Height="32"
+                       x:Name="RepoStarIcon" Margin="32,26,16,0"
+                       RelativePanel.AlignLeftWith="RepoName"
+                       RelativePanel.Below="RepoDescription" />
+                <TextBlock x:Name="RepoIssuseCount" Text="{Binding open_issues_count}" 
+                           Margin="32,4,0,0" Width="32" TextAlignment="Center"
+                        RelativePanel.AlignLeftWith="RepoStarIcon"
+                        RelativePanel.Below="RepoStarIcon" />
+
+                <Image Source="/Assets/git-branch.png" Width="32" Height="32"
+                       x:Name="RepoIssueIcon" Margin="32,26,16,0"
+                        RelativePanel.RightOf="RepoStarIcon"
+                        RelativePanel.Below="RepoDescription" />
+                <TextBlock x:Name="RepoForkCount" Text="{Binding forks_count}" 
+                           Margin="32,4,0,0" Width="32" TextAlignment="Center"
+                        RelativePanel.AlignLeftWith="RepoIssueIcon"
+                        RelativePanel.Below="RepoIssueIcon" />
+
+                <Image Source="/Assets/git-watch.png" Width="32" Height="32" 
+                       x:Name="RepoForkIcon" Margin="32,26,16,0"
+                       RelativePanel.RightOf="RepoIssueIcon"
+                       RelativePanel.Below="RepoDescription" />
+                <TextBlock x:Name="RepoWatchCount" Text="{Binding watchers_count}" 
+                           Margin="32,4,0,0" Width="32" TextAlignment="Center"
+                        RelativePanel.AlignLeftWith="RepoForkIcon"
+                        RelativePanel.Below="RepoForkIcon" />
+
+                <Image Source="/Assets/git-star.png" Width="32" Height="32" 
+                       x:Name="RepoWatchIcon" Margin="32,26,16,0"
+                       RelativePanel.RightOf="RepoForkIcon"
+                       RelativePanel.Below="RepoDescription" />
+                <TextBlock x:Name="RepoStarCount" Text="{Binding stargazers_count}" 
+                           Margin="32,4,0,0" Width="32" TextAlignment="Center"
+                       RelativePanel.AlignLeftWith="RepoWatchIcon"
+                       RelativePanel.Below="RepoWatchIcon" />
+
+                <Image x:Name="RepoOwnerPic" Source="{Binding owner.avatar_url}" 
+                       Width="60" Margin="24,16,32,0" Stretch="UniformToFill" />
+                <TextBlock x:Name="RepoOwnerName"
+                       Margin="0,4,0,0" Width="108" TextAlignment="Center"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       RelativePanel.AlignLeftWith="RepoOwnerPic"
+                       RelativePanel.Below="RepoOwnerPic">
+                    <Run Text="{Binding owner.login}"/>
+                    <LineBreak />
+                    <Run Text="owner" />
+                </TextBlock>
+
+                <Button RelativePanel.AlignBottomWithPanel="True" 
+                        Content="Make Default" Command="{x:Bind ViewModel.MakeDefaultCommand}" />
+
+            </RelativePanel>
+
         </StackPanel>
 
     </Grid>
