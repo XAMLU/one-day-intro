@@ -7,24 +7,27 @@ using XamlU.Demo.GitHubLibrary.Models;
 using Windows.Security.Authentication.Web;
 using Windows.Foundation;
 using System.Runtime.CompilerServices;
+using Windows.UI.Xaml.Input;
 
 namespace OneDayWorkshop01.Services
 {
     class GitHubService
     {
-        private SettingsService _settingsService;
-
-        public GitHubService()
-        {
-            _settingsService = new SettingsService();
-        }
+        static GitHubClient _gitHubClient;
 
         static GitHubService()
         {
             _gitHubClient = new GitHubClient();
         }
 
-        static GitHubClient _gitHubClient;
+        private SettingsService _settingsService;
+        private MessageService _messageService;
+
+        public GitHubService()
+        {
+            _settingsService = new SettingsService();
+            _messageService = new MessageService();
+        }
 
         public async Task<GitHubUser> GetUserAsync()
         {
@@ -36,6 +39,18 @@ namespace OneDayWorkshop01.Services
         {
             ThrowIfNotAuthenticated();
             return (await _gitHubClient.SearchRespositoriesAsync(query))?.items;
+        }
+
+        internal async Task<object> GetCommentsAsync(GitHubIssue gitHubIssue)
+        {
+            ThrowIfNotAuthenticated();
+            throw new NotImplementedException();
+        }
+
+        public async Task<GitHubIssues> GetIssuesAsync(string repo)
+        {
+            ThrowIfNotAuthenticated();
+            return await _gitHubClient.GetRepositoryIssuesAsync(repo);
         }
 
         public async Task<GitHubRepository> GetRepositoryAsync(string repositoryFullName)
@@ -56,7 +71,11 @@ namespace OneDayWorkshop01.Services
         public bool IsAuthenticated
         {
             get => _isAuthenticated;
-            set => _isAuthenticated = value;
+            set
+            {
+                _isAuthenticated = value;
+                _messageService.SendIsAuthenticatedChanged(value);
+            }
         }
 
         public async Task<bool> AuthenticateAsync(bool silent = false)

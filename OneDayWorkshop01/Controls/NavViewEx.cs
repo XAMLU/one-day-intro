@@ -29,7 +29,8 @@ namespace OneDayWorkshop01.Controls
         public static void SetHeader(Page obj, string value)
             => obj.SetValue(HeaderProperty, value);
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.RegisterAttached("Header", typeof(string), typeof(NavProperties), new PropertyMetadata(null));
+            DependencyProperty.RegisterAttached("Header", typeof(string), 
+                typeof(NavProperties), new PropertyMetadata(null));
     }
 
     public class NavViewEx : NavigationView
