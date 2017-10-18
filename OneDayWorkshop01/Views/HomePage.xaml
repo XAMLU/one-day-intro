@@ -2,7 +2,9 @@
     x:Class="OneDayWorkshop01.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="using:OneDayWorkshop01.Controls"
+    controls:NavProperties.Header="Home page"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:OneDayWorkshop01.ViewModels"
     xmlns:converters="using:OneDayWorkshop01.Converters"
@@ -18,24 +20,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Home Page" Style="{StaticResource HeaderTextBlockStyle}" />
-
-        <StackPanel Grid.Row="1" x:Name="WaitUI" Visibility="Visible">
+        <StackPanel x:Name="WaitUI" Visibility="Visible">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" x:Name="LoggedOutUI" Visibility="Collapsed">
+        <StackPanel x:Name="LoggedOutUI" Visibility="Collapsed">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
             <Button Content="Login now" Click="Login_Clicked" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" x:Name="LoggedInUI" Visibility="Collapsed">
+        <StackPanel x:Name="LoggedInUI" Visibility="Collapsed">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="Welcome, {0}" />
 
             <StackPanel Orientation="Horizontal" Margin="0,16">
@@ -58,9 +53,8 @@
                 </ListView.Header>
             </ListView>
 
-
             <RelativePanel Visibility="{x:Bind ViewModel.SelectedRepository, Mode=OneWay, Converter={StaticResource CollapsedWhenNullConverter}}" 
-                           Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
+                           Margin="0,16" Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
 
                 <RelativePanel.Background>
                     <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />

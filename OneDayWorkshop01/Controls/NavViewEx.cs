@@ -15,6 +15,21 @@ namespace OneDayWorkshop01.Controls
         public static readonly DependencyProperty PageTypeProperty =
             DependencyProperty.RegisterAttached("PageType", typeof(Type),
                 typeof(NavProperties), new PropertyMetadata(null));
+
+        public static bool GetIsStartPage(NavigationViewItem obj)
+            => (bool)obj.GetValue(IsStartPageProperty);
+        public static void SetIsStartPage(NavigationViewItem obj, bool value)
+            => obj.SetValue(IsStartPageProperty, value);
+        public static readonly DependencyProperty IsStartPageProperty =
+            DependencyProperty.RegisterAttached("IsStartPage", typeof(bool),
+                typeof(NavProperties), new PropertyMetadata(false));
+
+        public static string GetHeader(Page obj)
+            => (string)obj.GetValue(HeaderProperty);
+        public static void SetHeader(Page obj, string value)
+            => obj.SetValue(HeaderProperty, value);
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.RegisterAttached("Header", typeof(string), typeof(NavProperties), new PropertyMetadata(null));
     }
 
     public class NavViewEx : NavigationView
@@ -30,6 +45,11 @@ namespace OneDayWorkshop01.Controls
             ItemInvoked += NavViewEx_ItemInvoked;
             SystemNavigationManager.GetForCurrentView().BackRequested += ShellPage_BackRequested;
             RegisterPropertyChangedCallback(IsPaneOpenProperty, IsPaneOpenChanged);
+            Loaded += (s, e) =>
+            {
+                if (FindStart() is NavigationViewItem i && i != null)
+                    Navigate(_frame, i.GetValue(NavProperties.PageTypeProperty) as Type);
+            };
         }
 
         private void IsPaneOpenChanged(DependencyObject sender, DependencyProperty dp)
@@ -49,10 +69,24 @@ namespace OneDayWorkshop01.Controls
         }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
-            => SelectedItem = Find(e.SourcePageType);
+        {
+            SelectedItem = Find(e.SourcePageType);
+            UpdateHeader();
+        }
+
+        private void UpdateHeader()
+        {
+            if (_frame.Content is Page p && p.GetValue(NavProperties.HeaderProperty) is string s && !string.IsNullOrEmpty(s))
+            {
+                Header = s;
+            }
+        }
 
         private void ShellPage_BackRequested(object sender, BackRequestedEventArgs e)
             => _frame.GoBack();
+
+        NavigationViewItem FindStart()
+            => MenuItems.OfType<NavigationViewItem>().SingleOrDefault(x => (bool)x.GetValue(NavProperties.IsStartPageProperty));
 
         NavigationViewItem Find(string content)
             => MenuItems.OfType<NavigationViewItem>().SingleOrDefault(x => x.Content.Equals(content));

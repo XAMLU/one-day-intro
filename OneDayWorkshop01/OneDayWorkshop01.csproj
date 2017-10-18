@@ -129,7 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\git-branch.png" />
+    <Content Include="Assets\git-code-menu.png" />
     <Content Include="Assets\git-issue.png" />
+    <Content Include="Assets\git-issue-menu.png" />
+    <Content Include="Assets\git-pull-request-menu.png" />
     <Content Include="Assets\git-star.png" />
     <Content Include="Assets\git-watch.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />

@@ -5,16 +5,51 @@
     xmlns:local="using:OneDayWorkshop01.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:OneDayWorkshop01.Controls"
+    xmlns:views="using:OneDayWorkshop01.Views"
     mc:Ignorable="d">
 
-    <NavigationView x:Name="MainNavigationView" SelectionChanged="NavigationView_SelectionChanged">
+    <controls:NavViewEx x:Name="MainNavigationView" 
+                        SettingsPageType="views:SettingsPage">
+
+        <NavigationView.HeaderTemplate>
+            <DataTemplate>
+                <CommandBar>
+                    <CommandBar.Content>
+                        <Grid Margin="12,5,0,11" VerticalAlignment="Stretch">
+                            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </CommandBar.Content>
+                </CommandBar>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
+
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Repository" />
-            <NavigationViewItem x:Name="HomeButton" Icon="Home" Content="Home" />
-            <NavigationViewItem x:Name="CodeButton" Icon="Add" Content="Code" />
-            <NavigationViewItem x:Name="IssuesButton" Icon="Add" Content="Issues" />
-            <NavigationViewItem x:Name="PullButton" Icon="Add" Content="Pull Requests" />
+            <NavigationViewItem controls:NavProperties.PageType="views:HomePage" 
+                                controls:NavProperties.IsStartPage="True" 
+                                Icon="Home" Content="Home">
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:CodePage"  
+                                Content="Code">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/git-code-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:IssuesPage"  
+                                Content="Issues">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/git-issue-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:PullPage"  
+                                Content="Pull Requests">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/git-pull-request-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
         </NavigationView.MenuItems>
-        <Frame x:Name="NavigationFrame" />
-    </NavigationView>
+
+    </controls:NavViewEx>
+
 </Page>

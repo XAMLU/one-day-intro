@@ -1,13 +1,14 @@
 ﻿<Page
     x:Class="OneDayWorkshop01.Views.IssuesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:controls="using:OneDayWorkshop01.Controls"
+    controls:NavProperties.Header="Issues page"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OneDayWorkshop01.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
-        <TextBlock Text="Issues Page" Style="{StaticResource HeaderTextBlockStyle}" />
     </Grid>
 </Page>
