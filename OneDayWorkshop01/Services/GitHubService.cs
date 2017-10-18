@@ -35,22 +35,22 @@ namespace OneDayWorkshop01.Services
             return await _gitHubClient.GetUserDetailsAsync();
         }
 
-        public async Task<IEnumerable<SearchRepositoriesItem>> SearchRepositoriesAsync(string query)
+        public async Task<SearchRepositoriesItem[]> SearchRepositoriesAsync(string query)
         {
             ThrowIfNotAuthenticated();
             return (await _gitHubClient.SearchRespositoriesAsync(query))?.items;
         }
 
-        internal async Task<object> GetCommentsAsync(GitHubIssue gitHubIssue)
+        internal async Task<GitHubComment[]> GetCommentsAsync(string repo, int id)
         {
             ThrowIfNotAuthenticated();
-            throw new NotImplementedException();
+            return await _gitHubClient.GetRepositoryIssueCommentsAsync(repo, id);
         }
 
-        public async Task<GitHubIssues> GetIssuesAsync(string repo)
+        public async Task<GitHubIssue[]> GetIssuesAsync(string repo)
         {
             ThrowIfNotAuthenticated();
-            return await _gitHubClient.GetRepositoryIssuesAsync(repo);
+            return (await _gitHubClient.GetRepositoryIssuesAsync(repo)).Issues;
         }
 
         public async Task<GitHubRepository> GetRepositoryAsync(string repositoryFullName)

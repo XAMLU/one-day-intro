@@ -11,15 +11,17 @@ using GalaSoft.MvvmLight;
 
 namespace OneDayWorkshop01.ViewModels
 {
-    class IssueViewModel: ObservableObject
+    class IssueViewModel : ObservableObject
     {
         private MessageService _messageService;
         private GitHubService _githubService;
+        private SettingsService _settingsService;
 
         public IssueViewModel(GitHubIssue issue)
         {
             _messageService = new MessageService();
             _githubService = new GitHubService();
+            _settingsService = new SettingsService();
             GitHubIssue = issue;
         }
 
@@ -33,12 +35,18 @@ namespace OneDayWorkshop01.ViewModels
 
         public async Task RefillCommentsAsync()
         {
-            var items = await _githubService.GetCommentsAsync(GitHubIssue);
+            Comments.Clear();
+            var repo = _settingsService.DefaultRepository;
+            var comments = await _githubService.GetCommentsAsync(repo, GitHubIssue.number);
+            foreach (var item in comments)
+            {
+                Comments.Add(item);
+            }
         }
 
         public GitHubIssue GitHubIssue { get; set; }
 
-        public ObservableCollection<object> Comments { get; } = new ObservableCollection<object>();
+        public ObservableCollection<GitHubComment> Comments { get; } = new ObservableCollection<GitHubComment>();
 
         private RelayCommand _refillCommentsCommand;
         private RelayCommand RefillCommentsCommand

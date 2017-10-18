@@ -22,45 +22,34 @@ namespace OneDayWorkshop01.ViewModels
             {
                 _settingsService = new SettingsService();
                 _githubService = new GitHubService();
-                RefreshIssuesCommand.Execute(null);
+                RefreshIssues();
             }
         }
 
-        private RelayCommand _refreshIssuesCommand;
-        public RelayCommand RefreshIssuesCommand
+        private async void RefreshIssues()
         {
-            get => _refreshIssuesCommand ?? (_refreshIssuesCommand = new RelayCommand(RefreshIssuesExecute, RefreshIssuesCanExecute));
-        }
-        private async void RefreshIssuesExecute()
-        {
-            Issues.Clear();
             OpenIssues.Clear();
             ClosedIssues.Clear();
 
             var repo = _settingsService.DefaultRepository;
             var items = await _githubService.GetIssuesAsync(repo);
 
-            foreach (var item in items.Issues)
-            {
-                Issues.Add(item);
-            }
-            foreach (var item in items.Issues.Where(x => x.state.Equals("open")))
+            foreach (var item in items
+                .Where(x => x.state.Equals("open"))
+                .Select(x => new IssueViewModel(x)))
             {
                 OpenIssues.Add(item);
             }
-            foreach (var item in items.Issues.Where(x => !x.state.Equals("open")))
+            foreach (var item in items
+                .Where(x => !x.state.Equals("open"))
+                .Select(x => new IssueViewModel(x)))
             {
                 ClosedIssues.Add(item);
             }
         }
-        private bool RefreshIssuesCanExecute()
-        {
-            return true;
-        }
 
-        public ObservableCollection<GitHubIssue> Issues { get; } = new ObservableCollection<GitHubIssue>();
-        public ObservableCollection<GitHubIssue> OpenIssues { get; } = new ObservableCollection<GitHubIssue>();
-        public ObservableCollection<GitHubIssue> ClosedIssues { get; } = new ObservableCollection<GitHubIssue>();
+        public ObservableCollection<IssueViewModel> OpenIssues { get; } = new ObservableCollection<IssueViewModel>();
+        public ObservableCollection<IssueViewModel> ClosedIssues { get; } = new ObservableCollection<IssueViewModel>();
 
         private IssueViewModel _selectedIssue;
         public IssueViewModel SelectedIssue

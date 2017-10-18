@@ -20,6 +20,11 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
 
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <StackPanel x:Name="WaitUI" Visibility="Visible">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
@@ -53,8 +58,10 @@
                 </ListView.Header>
             </ListView>
 
+        </StackPanel>
+        
             <RelativePanel Visibility="{x:Bind ViewModel.SelectedRepository, Mode=OneWay, Converter={StaticResource CollapsedWhenNullConverter}}" 
-                           Margin="0,16" Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
+                           Grid.Row="1" Margin="0,16" Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
 
                 <RelativePanel.Background>
                     <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />
@@ -125,8 +132,6 @@
                         Content="Make Default" Command="{x:Bind ViewModel.MakeDefaultCommand}" />
 
             </RelativePanel>
-
-        </StackPanel>
 
     </Grid>
 </Page>
