@@ -25,18 +25,18 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="WaitUI" Visibility="Visible">
+        <StackPanel x:Name="WaitUI" Visibility="{x:Bind ViewModel.ShowWaitUI, Mode=OneWay}">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
         </StackPanel>
 
-        <StackPanel x:Name="LoggedOutUI" Visibility="Collapsed">
+        <StackPanel x:Name="LoggedOutUI" Visibility="{x:Bind ViewModel.ShowLoggedOutUI, Mode=OneWay}">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
             <Button Content="Login now" Click="Login_Clicked" />
         </StackPanel>
 
-        <StackPanel x:Name="LoggedInUI" Visibility="Collapsed">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="Welcome, {0}" />
+        <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ViewModel.ShowLoggedInUI, Mode=OneWay}">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind ViewModel.User.name, Mode=OneWay}" />
 
             <StackPanel Orientation="Horizontal" Margin="0,16">
                 <TextBox Header="Find a repository" PlaceholderText="XAMLU" Width="200" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
