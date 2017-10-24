@@ -82,7 +82,7 @@
                                    RelativePanel.AlignRightWithPanel="True"
                                    RelativePanel.AlignLeftWith="RepoName" />
 
-                <Image Source="/Assets/git-issue.png" Width="32" Height="32"
+                <Image Source="/Images/git-issue.png" Width="32" Height="32"
                        x:Name="RepoStarIcon" Margin="32,26,16,0"
                        RelativePanel.AlignLeftWith="RepoName"
                        RelativePanel.Below="RepoDescription" />
@@ -91,7 +91,7 @@
                         RelativePanel.AlignLeftWith="RepoStarIcon"
                         RelativePanel.Below="RepoStarIcon" />
 
-                <Image Source="/Assets/git-branch.png" Width="32" Height="32"
+                <Image Source="/Images/git-branch.png" Width="32" Height="32"
                        x:Name="RepoIssueIcon" Margin="32,26,16,0"
                         RelativePanel.RightOf="RepoStarIcon"
                         RelativePanel.Below="RepoDescription" />
@@ -100,7 +100,7 @@
                         RelativePanel.AlignLeftWith="RepoIssueIcon"
                         RelativePanel.Below="RepoIssueIcon" />
 
-                <Image Source="/Assets/git-watch.png" Width="32" Height="32" 
+                <Image Source="/Images/git-watch.png" Width="32" Height="32" 
                        x:Name="RepoForkIcon" Margin="32,26,16,0"
                        RelativePanel.RightOf="RepoIssueIcon"
                        RelativePanel.Below="RepoDescription" />
@@ -109,7 +109,7 @@
                         RelativePanel.AlignLeftWith="RepoForkIcon"
                         RelativePanel.Below="RepoForkIcon" />
 
-                <Image Source="/Assets/git-star.png" Width="32" Height="32" 
+                <Image Source="/Images/git-star.png" Width="32" Height="32" 
                        x:Name="RepoWatchIcon" Margin="32,26,16,0"
                        RelativePanel.RightOf="RepoForkIcon"
                        RelativePanel.Below="RepoDescription" />
