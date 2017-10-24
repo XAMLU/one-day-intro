@@ -1,10 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using OneDayWorkshop01.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 
 namespace OneDayWorkshop01.ViewModels
@@ -12,14 +7,19 @@ namespace OneDayWorkshop01.ViewModels
     class SettingsPageViewModel
     {
         private SettingsService _settingService;
+        private GitHubService _githubService;
+        private MessageService _messageService;
 
         public SettingsPageViewModel()
         {
-            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled
-                || !Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled
+                || Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
             {
-                _settingService = new SettingsService();
+                return;
             }
+            _settingService = new SettingsService();
+            _githubService = new GitHubService();
+            _messageService = new MessageService();
         }
 
         public RelayCommand _clearDefaultCommand;
@@ -31,6 +31,7 @@ namespace OneDayWorkshop01.ViewModels
         {
             _settingService.DefaultRepository = null;
             ClearDefaultCommand.RaiseCanExecuteChanged();
+            _messageService.SendGithubStatusChanged();
         }
         private bool ClearDefaultCanExecute()
         {

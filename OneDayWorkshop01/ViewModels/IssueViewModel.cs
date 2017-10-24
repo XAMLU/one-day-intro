@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using OneDayWorkshop01.Services;
 using XamlU.Demo.GitHubLibrary.Models;
@@ -15,29 +12,22 @@ namespace OneDayWorkshop01.ViewModels
     {
         private MessageService _messageService;
         private GitHubService _githubService;
-        private SettingsService _settingsService;
 
         public IssueViewModel(GitHubIssue issue)
         {
             _messageService = new MessageService();
             _githubService = new GitHubService();
-            _settingsService = new SettingsService();
             GitHubIssue = issue;
         }
 
         public async Task FillCommentsAsync()
         {
-            if (Comments.Count == 0)
+            if (Comments.Count != 0)
             {
-                await RefillCommentsAsync();
+                return;
             }
-        }
-
-        public async Task RefillCommentsAsync()
-        {
             Comments.Clear();
-            var repo = _settingsService.DefaultRepository;
-            var comments = await _githubService.GetCommentsAsync(repo, GitHubIssue.number);
+            var comments = await _githubService.GetCommentsAsync(GitHubIssue.number);
             foreach (var item in comments)
             {
                 Comments.Add(item);
@@ -47,15 +37,5 @@ namespace OneDayWorkshop01.ViewModels
         public GitHubIssue GitHubIssue { get; set; }
 
         public ObservableCollection<GitHubComment> Comments { get; } = new ObservableCollection<GitHubComment>();
-
-        private RelayCommand _refillCommentsCommand;
-        private RelayCommand RefillCommentsCommand
-        {
-            get => this._refillCommentsCommand ?? (this._refillCommentsCommand = new RelayCommand(RefillCommandExecute()));
-        }
-        private Action RefillCommandExecute()
-        {
-            return async () => await RefillCommentsAsync();
-        }
     }
 }

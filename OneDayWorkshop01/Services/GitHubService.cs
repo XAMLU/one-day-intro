@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using XamlU.Demo.GitHubLibrary;
@@ -7,7 +6,6 @@ using XamlU.Demo.GitHubLibrary.Models;
 using Windows.Security.Authentication.Web;
 using Windows.Foundation;
 using System.Runtime.CompilerServices;
-using Windows.UI.Xaml.Input;
 
 namespace OneDayWorkshop01.Services
 {
@@ -41,22 +39,30 @@ namespace OneDayWorkshop01.Services
             return (await _gitHubClient.SearchRespositoriesAsync(query))?.items;
         }
 
-        internal async Task<GitHubComment[]> GetCommentsAsync(string repo, int id)
+        internal async Task<GitHubComment[]> GetCommentsAsync(int issueId)
         {
             ThrowIfNotAuthenticated();
-            return await _gitHubClient.GetRepositoryIssueCommentsAsync(repo, id);
+            var repo = _settingsService.DefaultRepository;
+            return await _gitHubClient.GetRepositoryIssueCommentsAsync(repo, issueId);
         }
 
-        public async Task<GitHubIssue[]> GetIssuesAsync(string repo)
+        public async Task<GitHubIssue[]> GetIssuesAsync()
         {
             ThrowIfNotAuthenticated();
+            var repo = _settingsService.DefaultRepository;
             return (await _gitHubClient.GetRepositoryIssuesAsync(repo)).Issues;
         }
 
-        public async Task<GitHubRepository> GetRepositoryAsync(string repositoryFullName)
+        public async Task<GitHubCreateIssueResponse> CreateIssueAsync(string title, string body)
         {
             ThrowIfNotAuthenticated();
-            return await _gitHubClient.GetRepositoryAsync(repositoryFullName);
+            var repo = _settingsService.DefaultRepository;
+            var issue = new GitHubCreateIssue
+            {
+                title = title,
+                body = body,
+            };
+            return await _gitHubClient.PostRepositoryIssueAsync(repo, issue);
         }
 
         private void ThrowIfNotAuthenticated([CallerMemberName]string source = null)
@@ -74,7 +80,7 @@ namespace OneDayWorkshop01.Services
             set
             {
                 _isAuthenticated = value;
-                _messageService.SendIsAuthenticatedChanged(value);
+                _messageService.SendGithubStatusChanged();
             }
         }
 
@@ -85,9 +91,9 @@ namespace OneDayWorkshop01.Services
 
             var callbackUri = WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
             var requestUri = new Uri($"https://github.com/login/oauth/authorize?" +
-                                   $"client_id={_settingsService.GithubClientId}" +
-                                   $"&redirect_uri={Uri.EscapeUriString(callbackUri.ToString())}" +
-                                   $"&scope=read_stream repo&display=popup&response_type=token");
+                                     $"client_id={_settingsService.GithubClientId}" +
+                                     $"&redirect_uri={Uri.EscapeUriString(callbackUri.ToString())}" +
+                                     $"&scope=read_stream repo&display=popup&response_type=token");
 
             WebAuthenticationResult webAuthResult;
             if (silent)

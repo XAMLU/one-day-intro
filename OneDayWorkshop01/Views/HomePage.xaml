@@ -20,11 +20,6 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
 
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
         <StackPanel x:Name="WaitUI" Visibility="{x:Bind ViewModel.ShowWaitUI, Mode=OneWay}">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
@@ -35,21 +30,30 @@
             <Button Content="Login now" Click="Login_Clicked" />
         </StackPanel>
 
-        <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ViewModel.ShowLoggedInUI, Mode=OneWay}">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind ViewModel.User.name, Mode=OneWay}" />
+        <Grid x:Name="LoggedInUI" Visibility="{x:Bind ViewModel.ShowLoggedInUI, Mode=OneWay}">
 
-            <StackPanel Orientation="Horizontal" Margin="0,16">
-                <TextBox Header="Find a repository" PlaceholderText="XAMLU" Width="200" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Content="Search" VerticalAlignment="Bottom" Command="{x:Bind ViewModel.SearchCommand}" Margin="16,0" />
-                <TextBlock VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind ViewModel.User.name, Mode=OneWay}" />
+                <StackPanel Orientation="Horizontal" Margin="0,16">
+                    <TextBox Header="Find a repository" PlaceholderText="XAMLU" Width="200" Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Search" VerticalAlignment="Bottom" Command="{x:Bind ViewModel.SearchCommand}" Margin="16,0" />
+                    <TextBlock VerticalAlignment="Bottom">
                     <Run Text="Current default repo:" />
                     <LineBreak />
                     <Run Text="{x:Bind ViewModel.DefaultRepository, Mode=OneWay}" />
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </StackPanel>
-
-            <ListView DisplayMemberPath="full_name" MaxHeight="240" 
-                      ItemsSource="{x:Bind ViewModel.Results}" SelectedItem="{x:Bind ViewModel.SelectedRepository, Mode=TwoWay}">
+            
+        <ListView DisplayMemberPath="full_name" Grid.Row="1"
+                      ItemsSource="{x:Bind ViewModel.Results}" 
+                      SelectedItem="{x:Bind ViewModel.SelectedRepository, Mode=TwoWay}">
                 <ListView.Header>
                     <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5">
                         <Run Text="Current result count:" />
@@ -58,10 +62,8 @@
                 </ListView.Header>
             </ListView>
 
-        </StackPanel>
-        
             <RelativePanel Visibility="{x:Bind ViewModel.SelectedRepository, Mode=OneWay, Converter={StaticResource CollapsedWhenNullConverter}}" 
-                           Grid.Row="1" Margin="0,16" Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
+                           Grid.Row="2" Margin="0,16" Padding="16" DataContext="{x:Bind ViewModel.SelectedRepository, Mode=OneWay}">
 
                 <RelativePanel.Background>
                     <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />
@@ -133,5 +135,6 @@
 
             </RelativePanel>
 
+        </Grid>
     </Grid>
 </Page>

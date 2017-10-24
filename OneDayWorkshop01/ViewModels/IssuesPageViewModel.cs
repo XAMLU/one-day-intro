@@ -1,29 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using OneDayWorkshop01.Services;
 using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Command;
-using XamlU.Demo.GitHubLibrary.Models;
 
 namespace OneDayWorkshop01.ViewModels
 {
     class IssuesPageViewModel
     {
-        private SettingsService _settingsService;
         private GitHubService _githubService;
 
         public IssuesPageViewModel()
         {
-            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled
-               || !Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled
+               || Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
             {
-                _settingsService = new SettingsService();
-                _githubService = new GitHubService();
-                RefreshIssues();
+                return;
             }
+            _githubService = new GitHubService();
+            RefreshIssues();
         }
 
         private async void RefreshIssues()
@@ -31,8 +24,7 @@ namespace OneDayWorkshop01.ViewModels
             OpenIssues.Clear();
             ClosedIssues.Clear();
 
-            var repo = _settingsService.DefaultRepository;
-            var items = await _githubService.GetIssuesAsync(repo);
+            var items = await _githubService.GetIssuesAsync();
 
             foreach (var item in items
                 .Where(x => x.state.Equals("open"))

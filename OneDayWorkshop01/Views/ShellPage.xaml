@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:OneDayWorkshop01.Controls"
     xmlns:views="using:OneDayWorkshop01.Views"
-    mc:Ignorable="d">
+    mc:Ignorable="d" x:Name="ThisPage">
 
-    <controls:NavViewEx x:Name="MainNavigationView" 
+    <controls:NavViewEx x:Name="MainNavigationView" x:FieldModifier="Public"
                         SettingsPageType="views:SettingsPage">
 
         <NavigationView.HeaderTemplate>
@@ -20,6 +20,8 @@
                             <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
                         </Grid>
                     </CommandBar.Content>
+                    <AppBarButton IsEnabled="{Binding EnableNavigation, ElementName=ThisPage, Mode=OneWay}"
+                                Icon="Add" Label="New Issue" Click="NewIssue_Click" />
                 </CommandBar>
             </DataTemplate>
         </NavigationView.HeaderTemplate>

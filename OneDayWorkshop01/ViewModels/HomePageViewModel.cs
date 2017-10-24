@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using OneDayWorkshop01.Services;
 using GalaSoft.MvvmLight;
-using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using XamlU.Demo.GitHubLibrary.Models;
@@ -16,19 +11,22 @@ namespace OneDayWorkshop01.ViewModels
     {
         private GitHubService _gitHubService;
         private SettingsService _settingService;
+        private MessageService _messageService;
 
         public HomePageViewModel()
         {
-            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled
-                || !Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
-            {
-                _gitHubService = new GitHubService();
-                _settingService = new SettingsService();
-            }
             ShowWaitUI = true;
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled
+                || Windows.ApplicationModel.DesignMode.DesignMode2Enabled)
+            {
+                return;
+            }
+            _gitHubService = new GitHubService();
+            _settingService = new SettingsService();
+            _messageService = new MessageService();
         }
 
-        private string _searchQuery;
+        private string _searchQuery = "xamlu";
         public string SearchQuery
         {
             get => _searchQuery;
@@ -80,6 +78,7 @@ namespace OneDayWorkshop01.ViewModels
         private void MakeDefaultExecute()
         {
             DefaultRepository = _settingService.DefaultRepository = SelectedRepository.full_name;
+            _messageService.SendGithubStatusChanged();
         }
         private bool MakeDefaultCanExecute()
         {
@@ -97,7 +96,8 @@ namespace OneDayWorkshop01.ViewModels
         public bool LoggedIn
         {
             get => _loggedIn;
-            set {
+            set
+            {
                 Set(ref _loggedIn, value);
                 ShowLoggedInUI = _loggedIn;
                 ShowLoggedOutUI = !_loggedIn;
