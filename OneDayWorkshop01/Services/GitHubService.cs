@@ -61,6 +61,8 @@ namespace OneDayWorkshop01.Services
             {
                 title = title,
                 body = body,
+                assignee = string.Empty,
+                labels = new string[] { }
             };
             return await _gitHubClient.PostRepositoryIssueAsync(repo, issue);
         }
