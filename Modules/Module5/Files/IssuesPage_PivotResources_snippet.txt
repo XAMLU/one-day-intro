@@ -1,0 +1,38 @@
+        <Pivot.Resources>
+            <DataTemplate x:Name="ListItemTemplate">
+                <TextBlock MaxLines="2" TextWrapping="2" Margin="0,4">
+                    <Run Text="#" /><Run Text="{Binding GitHubIssue.number}" />
+                    <Run Text="{Binding GitHubIssue.title}" />
+                </TextBlock>
+            </DataTemplate>
+            <DataTemplate x:Name="ItemDetailTemplate">
+                <ScrollViewer>
+                    <StackPanel Margin="16">
+                        <TextBlock Text="{Binding GitHubIssue.title}" Style="{StaticResource TitleTextBlockStyle}" />
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Margin="0,4">
+                                                <Run Text="{Binding GitHubIssue.user.login}" />
+                                                <Run Text=" created this on " />
+                                                <Run Text="{Binding GitHubIssue.created_at}" />
+                        </TextBlock>
+                        <toolkit:MarkdownTextBlock Text="{Binding GitHubIssue.body}" Padding="0,16" />
+                        <ItemsControl ItemsSource="{Binding Comments}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,8" Padding="16">
+                                        <StackPanel.Background>
+                                            <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />
+                                        </StackPanel.Background>
+                                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Margin="0,4">
+                                                <Run Text="{Binding user.login}" />
+                                                <Run Text=" commented on " />
+                                                <Run Text="{Binding created_at}" />
+                                        </TextBlock>
+                                        <toolkit:MarkdownTextBlock Text="{Binding body}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </DataTemplate>
+        </Pivot.Resources>

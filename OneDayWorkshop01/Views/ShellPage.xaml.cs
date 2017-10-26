@@ -21,10 +21,18 @@ namespace GitHubBrowser.Views
         private void HandleAuthChanged(GithubStatusChangedMessage message)
         {
             EnableNavigation = message.AllowNavigation;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableNavigation)));
         }
 
-        public bool EnableNavigation { get; set; } = false;
+        private bool _enableNavigation = false;
+        public bool EnableNavigation
+        {
+            get => _enableNavigation;
+            set
+            {
+                _enableNavigation = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableNavigation)));
+            }
+        }
 
         private void NewIssue_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

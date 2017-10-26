@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="GitHubBrowser.Views.IssuesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GitHubBrowser.Views"
+    xmlns:controls="using:GitHubBrowser.Controls"
+    controls:NavProperties.Header="Issues page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:GitHubBrowser.ViewModels"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewmodels:IssuesPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Pivot>
+
+        <Pivot.Resources>
+            <DataTemplate x:Name="ListItemTemplate">
+                <TextBlock MaxLines="2" TextWrapping="2" Margin="0,4">
+                    <Run Text="#" /><Run Text="{Binding GitHubIssue.number}" />
+                    <Run Text="{Binding GitHubIssue.title}" />
+                </TextBlock>
+            </DataTemplate>
+            <DataTemplate x:Name="ItemDetailTemplate">
+                <ScrollViewer>
+                    <StackPanel Margin="16">
+                        <TextBlock Text="{Binding GitHubIssue.title}" Style="{StaticResource TitleTextBlockStyle}" />
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Margin="0,4">
+                                                <Run Text="{Binding GitHubIssue.user.login}" />
+                                                <Run Text=" created this on " />
+                                                <Run Text="{Binding GitHubIssue.created_at}" />
+                        </TextBlock>
+                        <toolkit:MarkdownTextBlock Text="{Binding GitHubIssue.body}" Padding="0,16" />
+                        <ItemsControl ItemsSource="{Binding Comments}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,8" Padding="16">
+                                        <StackPanel.Background>
+                                            <SolidColorBrush Color="{ThemeResource SystemAccentColor}" Opacity=".2" />
+                                        </StackPanel.Background>
+                                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Margin="0,4">
+                                                <Run Text="{Binding user.login}" />
+                                                <Run Text=" commented on " />
+                                                <Run Text="{Binding created_at}" />
+                                        </TextBlock>
+                                        <toolkit:MarkdownTextBlock Text="{Binding body}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </DataTemplate>
+        </Pivot.Resources>
+
+        <PivotItem Header="Open Issues">
+
+            <toolkit:MasterDetailsView
+                SelectedItem="{x:Bind ViewModel.SelectedIssue, Mode=TwoWay}"
+                ItemsSource="{x:Bind ViewModel.OpenIssues}" 
+                ItemTemplate="{StaticResource ListItemTemplate}"
+                DetailsTemplate="{StaticResource ItemDetailTemplate}"/>
+
+        </PivotItem>
+
+        <PivotItem Header="Closed Issues">
+
+            <toolkit:MasterDetailsView 
+                SelectedItem="{x:Bind ViewModel.SelectedIssue, Mode=TwoWay}"
+                ItemsSource="{x:Bind ViewModel.ClosedIssues}" 
+                ItemTemplate="{StaticResource ListItemTemplate}"
+                DetailsTemplate="{StaticResource ItemDetailTemplate}"/>
+
+        </PivotItem>
+
+    </Pivot></Page>
