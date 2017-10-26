@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:GitHubBrowser.Controls"
-    xmlns:views="using:GitHubBrowser.Views"
-    mc:Ignorable="d" x:Name="ThisPage">
+    xmlns:views="using:GitHubBrowser.Views" 
+    x:Name="ThisPage"
+    mc:Ignorable="d">
 
     <controls:NavViewEx x:Name="MainNavigationView" x:FieldModifier="Public"
                         SettingsPageType="views:SettingsPage">
