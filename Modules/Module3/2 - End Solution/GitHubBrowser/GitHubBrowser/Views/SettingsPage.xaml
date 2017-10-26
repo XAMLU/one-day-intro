@@ -7,9 +7,19 @@
     controls:NavProperties.Header="Settings page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:GitHubBrowser.ViewModels"
     mc:Ignorable="d">
 
+    <Page.DataContext>
+        <viewmodels:SettingsPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <StackPanel Margin="32">
+            <TextBlock Text="{x:Bind ViewModel.Version}" Margin="0,0,0,16" />
+            <Button Content="Clear default repository setting" Command="{x:Bind ViewModel.ClearDefaultCommand}" />
+        </StackPanel>
 
     </Grid>
 </Page>
