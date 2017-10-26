@@ -23,6 +23,7 @@ namespace GitHubBrowser
     /// </summary>
     sealed partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();

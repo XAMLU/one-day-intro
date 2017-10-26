@@ -9,7 +9,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
+
+        <StackPanel x:Name="WaitUI" Visibility="{x:Bind ShowWaitUI, Mode=OneWay}">
+            <ProgressBar IsIndeterminate="True" />
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
+        </StackPanel>
+
+        <StackPanel x:Name="LoggedOutUI" Visibility="{x:Bind ShowLoggedOutUI, Mode=OneWay}">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
+            <Button Content="Login now" Click="{x:Bind LoginAsync}" />
+        </StackPanel>
+
+        <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ShowLoggedInUI, Mode=OneWay}">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind User.name, Mode=OneWay}" />
+        </StackPanel>
 
     </Grid>
 </Page>
