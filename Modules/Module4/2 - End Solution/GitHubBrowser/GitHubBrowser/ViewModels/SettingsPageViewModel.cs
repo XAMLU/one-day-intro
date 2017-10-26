@@ -8,6 +8,7 @@ namespace GitHubBrowser.ViewModels
     {
         private SettingsService _settingService;
         private GitHubService _githubService;
+        private MessageService _messageService;
 
         public SettingsPageViewModel()
         {
@@ -18,6 +19,7 @@ namespace GitHubBrowser.ViewModels
             }
             _settingService = new SettingsService();
             _githubService = new GitHubService();
+            _messageService = new MessageService();
         }
 
         public RelayCommand _clearDefaultCommand;
@@ -29,6 +31,7 @@ namespace GitHubBrowser.ViewModels
         {
             _settingService.DefaultRepository = null;
             ClearDefaultCommand.RaiseCanExecuteChanged();
+            _messageService.SendGitHubStatusChanged();
         }
         private bool ClearDefaultCanExecute()
         {

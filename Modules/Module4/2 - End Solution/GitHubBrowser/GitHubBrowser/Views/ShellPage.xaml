@@ -32,18 +32,21 @@
                                 Icon="Home" Content="Home">
             </NavigationViewItem>
             <NavigationViewItem controls:NavProperties.PageType="views:CodePage"  
+                                IsEnabled="{x:Bind EnableNavigation, Mode=OneWay}"
                                 Content="Code">
                 <NavigationViewItem.Icon>
                     <BitmapIcon UriSource="/Images/git-code-menu.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem controls:NavProperties.PageType="views:IssuesPage"  
+                                IsEnabled="{x:Bind EnableNavigation, Mode=OneWay}"
                                 Content="Issues">
                 <NavigationViewItem.Icon>
                     <BitmapIcon UriSource="/Images/git-issue-menu.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem controls:NavProperties.PageType="views:PullPage"  
+                                IsEnabled="{x:Bind EnableNavigation, Mode=OneWay}"
                                 Content="Pull Requests">
                 <NavigationViewItem.Icon>
                     <BitmapIcon UriSource="/Images/git-pull-request-menu.png" />

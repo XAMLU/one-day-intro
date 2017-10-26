@@ -19,10 +19,12 @@ namespace GitHubBrowser.Services
         }
 
         private SettingsService _settingsService;
+        private MessageService _messageService;
 
         public GitHubService()
         {
             _settingsService = new SettingsService();
+            _messageService = new MessageService();
         }
 
         public async Task<GitHubUser> GetUserAsync()
@@ -80,6 +82,7 @@ namespace GitHubBrowser.Services
             set
             {
                 _isAuthenticated = value;
+                _messageService.SendGitHubStatusChanged();
             }
         }
 

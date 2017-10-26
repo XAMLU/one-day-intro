@@ -11,6 +11,7 @@ namespace GitHubBrowser.ViewModels
     {
         private GitHubService _gitHubService;
         private SettingsService _settingService;
+        private MessageService _messageService;
 
         public HomePageViewModel()
         {
@@ -22,6 +23,7 @@ namespace GitHubBrowser.ViewModels
             }
             _gitHubService = new GitHubService();
             _settingService = new SettingsService();
+            _messageService = new MessageService();
         }
 
         private string _searchQuery = "xamlu";
@@ -76,6 +78,7 @@ namespace GitHubBrowser.ViewModels
         private void MakeDefaultExecute()
         {
             DefaultRepository = _settingService.DefaultRepository = SelectedRepository.full_name;
+            _messageService.SendGitHubStatusChanged();
         }
         private bool MakeDefaultCanExecute()
         {
