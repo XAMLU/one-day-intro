@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="GitHubBrowser.Views.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GitHubBrowser.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:GitHubBrowser.Controls"
+    xmlns:views="using:GitHubBrowser.Views" 
+    x:Name="ThisPage"
+    mc:Ignorable="d">
+
+    <controls:NavViewEx x:Name="MainNavigationView" x:FieldModifier="Public"
+                        SettingsPageType="views:SettingsPage">
+
+        <NavigationView.HeaderTemplate>
+            <DataTemplate>
+                <CommandBar>
+                    <CommandBar.Content>
+                        <Grid Margin="12,5,0,11" VerticalAlignment="Stretch">
+                            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </CommandBar.Content>
+                </CommandBar>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
+
+        <NavigationView.MenuItems>
+            <NavigationViewItemHeader Content="Repository" />
+            <NavigationViewItem controls:NavProperties.PageType="views:HomePage" 
+                                controls:NavProperties.IsStartPage="True" 
+                                Icon="Home" Content="Home">
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:CodePage"  
+                                Content="Code">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-code-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:IssuesPage"  
+                                Content="Issues">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-issue-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:PullPage"  
+                                Content="Pull Requests">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-pull-request-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+
+    </controls:NavViewEx>
+</Page>
