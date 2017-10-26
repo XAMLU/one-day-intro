@@ -176,3 +176,5 @@
     1. Click on Settings
     1. Clear the default repository
     1. Ensure no default repository is set
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 15_24_27.png
