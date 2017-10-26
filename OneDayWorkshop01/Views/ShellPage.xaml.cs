@@ -33,6 +33,7 @@ namespace GitHubBrowser.Views
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableNavigation)));
             }
         }
+
         private void NewIssue_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var nav = new NavigationService();
