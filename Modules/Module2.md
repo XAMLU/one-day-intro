@@ -48,6 +48,10 @@
 
     > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_28_32.png
 
+    > TODO: show the source code
+
+    > TODO: discuss HTTP Client, show diagnostics
+
 1. In Visual Studio, add a folder `Services` at the root level of your project.
 1. Copy `SettingsService.cs` and `GithubService.cs` to the `Services` folder.
     
