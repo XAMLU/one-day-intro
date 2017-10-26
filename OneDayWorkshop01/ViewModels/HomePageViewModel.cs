@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using OneDayWorkshop01.Services;
+using GitHubBrowser.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using XamlU.Demo.GitHubLibrary.Models;
 
-namespace OneDayWorkshop01.ViewModels
+namespace GitHubBrowser.ViewModels
 {
     public class HomePageViewModel : ObservableObject
     {

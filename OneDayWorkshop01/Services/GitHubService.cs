@@ -7,7 +7,7 @@ using Windows.Security.Authentication.Web;
 using Windows.Foundation;
 using System.Runtime.CompilerServices;
 
-namespace OneDayWorkshop01.Services
+namespace GitHubBrowser.Services
 {
     class GitHubService
     {

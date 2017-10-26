@@ -1,6 +1,6 @@
 ﻿using System;
-using OneDayWorkshop01.Controls;
-namespace OneDayWorkshop01.Services
+using GitHubBrowser.Controls;
+namespace GitHubBrowser.Services
 {
     public class NavigationService
     {

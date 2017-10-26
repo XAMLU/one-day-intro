@@ -1,7 +1,7 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Messaging;
 
-namespace OneDayWorkshop01.Services
+namespace GitHubBrowser.Services
 {
     public class MessageService
     {

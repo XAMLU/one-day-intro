@@ -1,14 +1,11 @@
-﻿using OneDayWorkshop01.Views;
+﻿using GitHubBrowser.Views;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
-using OneDayWorkshop01.Services;
 
-namespace OneDayWorkshop01
+namespace GitHubBrowser
 {
     sealed partial class App : Application
     {
-        private static ShellPage _shell;
-
         public App()
         {
             InitializeComponent();
@@ -16,8 +13,8 @@ namespace OneDayWorkshop01
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Window.Current.Content = _shell = new ShellPage();
-            NavigationService.Setup(_shell.MainNavigationView);
+            var shell = new ShellPage();
+            Window.Current.Content = shell;
             Window.Current.Activate();
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Windows.Foundation.Collections;
 using Windows.Storage;
 
-namespace OneDayWorkshop01.Services
+namespace GitHubBrowser.Services
 {
     class SettingsService
     {

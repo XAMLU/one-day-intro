@@ -4,7 +4,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace OneDayWorkshop01.Controls
+namespace GitHubBrowser.Controls
 {
     public partial class NavProperties : DependencyObject
     {

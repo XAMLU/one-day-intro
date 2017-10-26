@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using OneDayWorkshop01.Services;
+using GitHubBrowser.Services;
 using System.Collections.ObjectModel;
 
-namespace OneDayWorkshop01.ViewModels
+namespace GitHubBrowser.ViewModels
 {
     class IssuesPageViewModel
     {

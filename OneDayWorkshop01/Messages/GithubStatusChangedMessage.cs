@@ -1,4 +1,4 @@
-﻿namespace OneDayWorkshop01.Messages
+﻿namespace GitHubBrowser.Messages
 {
     public class GithubStatusChangedMessage
     {

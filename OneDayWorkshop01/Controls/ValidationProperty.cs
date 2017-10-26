@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System;
 using System.Linq;
 
-namespace OneDayWorkshop01.Controls
+namespace GitHubBrowser.Controls
 {
     public class ValidationProperty<T> : ObservableObject
     {

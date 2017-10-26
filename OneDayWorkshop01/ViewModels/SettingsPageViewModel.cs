@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using OneDayWorkshop01.Services;
+using GitHubBrowser.Services;
 using Windows.ApplicationModel;
 
-namespace OneDayWorkshop01.ViewModels
+namespace GitHubBrowser.ViewModels
 {
     class SettingsPageViewModel
     {

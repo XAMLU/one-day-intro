@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using OneDayWorkshop01.Services;
+using GitHubBrowser.Services;
 using XamlU.Demo.GitHubLibrary.Models;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
 
-namespace OneDayWorkshop01.ViewModels
+namespace GitHubBrowser.ViewModels
 {
     class IssueViewModel : ObservableObject
     {

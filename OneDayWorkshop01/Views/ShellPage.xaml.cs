@@ -1,9 +1,9 @@
-﻿using OneDayWorkshop01.Messages;
-using OneDayWorkshop01.Services;
+﻿using GitHubBrowser.Messages;
+using GitHubBrowser.Services;
 using Windows.UI.Xaml.Controls;
 using System.ComponentModel;
 
-namespace OneDayWorkshop01.Views
+namespace GitHubBrowser.Views
 {
     public sealed partial class ShellPage : Page, INotifyPropertyChanged
     {

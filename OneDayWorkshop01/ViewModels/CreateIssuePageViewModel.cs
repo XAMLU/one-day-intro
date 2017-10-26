@@ -1,13 +1,13 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System.Linq;
-using OneDayWorkshop01.Services;
-using OneDayWorkshop01.Controls;
+using GitHubBrowser.Services;
+using GitHubBrowser.Controls;
 using System;
 using GalaSoft.MvvmLight;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace OneDayWorkshop01.ViewModels
+namespace GitHubBrowser.ViewModels
 {
     public class CreateIssuePageViewModel : ObservableObject
     {
