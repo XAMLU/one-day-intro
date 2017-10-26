@@ -71,7 +71,108 @@
 
     > TODO: walk-through view-model
     > TODO: talk about seperation of concerns
+    > TODO: command
+
+### Task 3: implement Search
+
+1. In Visual Studio, add a folder `Converters` at the root level of your project.
+
+1. Copy `CollapsedWhenNullConverter.cs` to the `Converters` folder.
+
+    > Find the file in `Module3/Files`
+
+1. Open `HomePage.xaml`
+
+1. Add a reference to our new converter in `HomePage`.
+
+    This converter will be used to hide and show a UI element based on the value of another property having a value or being null.
+
+    ```xml
+    <Page.Resources>
+        <converters:CollapsedWhenNullConverter x:Name="CollapsedWhenNullConverter" />
+    </Page.Resources>
+    ```
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_27_34.png
+
+1. Replaced `LoggedInUI` with different XAML
+
+    > The current `LoggedInUI` block shows only the name of the current user in a single `TextBlock`. The new snippet does the same, but adds search capabilities to find a GitHub repository and mark it as the default repository for other operations in the app.
+
+    > This  snippet can be found in resources `Module3/Files/HomePage_LoggedinUi_Snippet.txt`
+
+    > TODO: discuss ListView
+
+    > TODO: discuss RelativePanel
+
+1. Run the app, hit `F5`
+
+    1. Search for "xamlu"
+    1. Notice the current repository is `None`
+    1. Select the "darenm" repository
+    1. Notice the repository details
+    1. Make the repository your default
+    1. Notice the current repository changed
+ 
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_29_56.png
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_31_27.png
+
 
 ### Task 3: implement Settings
 
-1. 
+> TODO : discuss Settings Service
+
+1. Copy `SettingsPageViewModel.cs` to the `ViewModels` folder.
+
+    > Find the file in `Module3/Files`
+
+    > TODO: discuss DesignModeEnabled
+
+    > TODO: discuss RelayCommand
+
+1. Open `SettingsPage.xaml`
+
+1. Add a reference to `SettingsPageViewModel` in the `SettingsPage.xaml` markup, by setting the value of `Page.DataContext`, shown below. Ensure it has the name `ViewModel`.
+
+    ```xml
+    <Page.DataContext>
+        <viewmodels:SettingsPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext> 
+    ```
+
+    The XAML above will require a new xml namespace declaration to your `ViewModels` namespace, as shown in the image below.
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_47_40.png
+
+1. Find the default `Grid` in `SettingsPage` and replace it with the Settings UI below:
+
+    > Note: alternatively, this snippet can be also found in resources `Module3/Files/SettingsPage_Ui_Snippet.txt`
+
+    Find:  
+
+    ```xml
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      
+    </Grid> 
+    ```
+
+    Replace with:
+
+    ```xml
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <StackPanel Margin="32">
+            <TextBlock Text="{x:Bind ViewModel.Version}" Margin="0,0,0,16" />
+            <Button Content="Clear default repository setting" Command="{x:Bind ViewModel.ClearDefaultCommand}" />
+        </StackPanel>
+        
+    </Grid> 
+    ```
+
+1. Test the app, hit `F5`
+
+    1. Ensure a default repository is set
+    1. Click on Settings
+    1. Clear the default repository
+    1. Ensure no default repository is set
