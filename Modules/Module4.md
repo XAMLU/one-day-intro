@@ -237,6 +237,7 @@
             }
         } 
         ```
+        
 1. Test the app, hit `F5`
 
     1. In `Settings`, clear the default repository.
