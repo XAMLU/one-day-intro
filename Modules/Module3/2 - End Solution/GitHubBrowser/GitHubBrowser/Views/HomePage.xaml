@@ -7,22 +7,28 @@
     controls:NavProperties.Header="Home page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:GitHubBrowser.ViewModels"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewmodels:HomePageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
 
-        <StackPanel x:Name="WaitUI" Visibility="{x:Bind ShowWaitUI, Mode=OneWay}">
+        <StackPanel x:Name="WaitUI" Visibility="{x:Bind ViewModel.ShowWaitUI, Mode=OneWay}">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
         </StackPanel>
 
-        <StackPanel x:Name="LoggedOutUI" Visibility="{x:Bind ShowLoggedOutUI, Mode=OneWay}">
+        <StackPanel x:Name="LoggedOutUI" Visibility="{x:Bind ViewModel.ShowLoggedOutUI, Mode=OneWay}">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
-            <Button Content="Login now" Click="{x:Bind LoginAsync}" />
+            <Button Content="Login now" Click="{x:Bind ViewModel.LoginAsync}" />
         </StackPanel>
 
-        <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ShowLoggedInUI, Mode=OneWay}">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind User.name, Mode=OneWay}" />
+        <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ViewModel.ShowLoggedInUI, Mode=OneWay}">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" 
+                       Text="{x:Bind ViewModel.User.name, Mode=OneWay}" />
         </StackPanel>
 
     </Grid>
