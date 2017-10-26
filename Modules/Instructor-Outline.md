@@ -51,13 +51,6 @@ The course is broken into a number of sections:
         * Add `HomePageViewModel`
         * Add view model binding to `HomePage.xaml.cs`
         * Move Auth into `HomePageViewModel`
-1. Issues, Master/Detail, Pivot for Issues
-    * Discuss
-        * Libraries
-        * Microsoft UWP Community Toolkit
-    * Code
-        * Complete `IssuesPage`
-        * Complete `IssuesPageViewModel`
 1. Messaging and Commanding
     * Discuss
         * Messaging
@@ -66,6 +59,15 @@ The course is broken into a number of sections:
         * Use message to enable/disable navigation when not logged in
         * Context menu / slide control for an issue
             > Is this still relevant given the changes?
+            
+1. Issues, Master/Detail, Pivot for Issues
+    * Discuss
+        * Libraries
+        * Microsoft UWP Community Toolkit
+    * Code
+        * Complete `IssuesPage`
+        * Complete `IssuesPageViewModel`
+
 1. Data entry and field/form validation
     * Discuss
         * What is validation and why do we need it?
