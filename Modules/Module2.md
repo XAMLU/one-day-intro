@@ -1,94 +1,170 @@
-## Register App with GitHub
+# Module 2
+
+### Task 1: get your app's callback URI
+
+1. Place the following code in the constructor of `App.xaml.cs`.
+
+    > This snippet is the easiest way to get your callback URI, and once you have it, you can remove this one-time code from your app. 
+
+    ```csharp
+    var callbackUri = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri(); 
+    ```
+
+1. Add a breakpoint (hit `F9`) on the new line.  
+1. Run your app and look at the reulting value.
+
+    > Note: the debug value will have curly braces at the start and the end `{ms-app://value}`, be sure and remove them so your URI is the correct syntax, like this `ms-app://value`. 
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_04_35.png
+
+1. Copy your `Callback URI` to somewhere handy
+
+### Task 2: Setup your app in Github
 
 1. Open the following url: [https://github.com/settings/applications/new](https://github.com/settings/applications/new)
-    1. Naming convention XU_Oredev2017_YourName
-1. Get your Application Callback URL:
-    ```csharp
-    var callbackUri = WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
-    ```
-1. Home Page URL: [http://xamlu.com/XU_Oredev2017_\<YourName\>]([http://xamlu.com/XU_Oredev2017_\<YourName\>)
-1. Set app callback URL
+
+    1. You only need to provide four values
+        1. **Application name** Naming convention XU_Oredev2017_\<YourName\>
+        1. **Homepage URL** http://xamlu.com/XU_Oredev2017_\<YourName\>
+        1. **Application description** "Sample app for Oredev"
+        1. **Authorization Callback URL** Use the result from Task 1 above
+
+        > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_17_46.png
+
+    1. Click `Register application`.
+    1. Copy *your* `Client Id` and `Client Secret` to somewhere handy
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_20_30.png
+
+### Task 3: Add services to your app
+
+1. Add a reference to the `Xamlu.Demo.GitHubLibrary` NuGet package 
+
+    1. Open the NuGet Package Manager Console
+    
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_26_42.png
+
+    2. Type the following into the console: `Install-Package XamlU.Demo.GithubLibrary`
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_28_32.png
+
 1. In Visual Studio, add a folder `Services` at the root level of your project.
-1. Add `SettingsService.cs` to the `Services` folder.
-1. Add `GitHubSevice.cs` to the `Services` folder.
-1. Add the following XAML to `HomePage.xaml`:
-```xml
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="32">
+1. Copy `SettingsService.cs` and `GithubService.cs` to the `Services` folder.
+    
+    > Find both files in `Module2/Files`
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+1. Update values in `SettingsService.cs`
 
-        <TextBlock Text="Home Page" Style="{StaticResource HeaderTextBlockStyle}" />
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_35_11.png
 
-        <StackPanel Grid.Row="1" x:Name="WaitUI" Visibility="Visible">
-            <ProgressBar IsIndeterminate="True" />
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
-        </StackPanel>
+    1. Replace `<your client id>` with your client id (from above)
+    2. Replace `<your secret>' with your secret (from above)
 
-        <StackPanel Grid.Row="1" x:Name="LoggedOutUI" Visibility="Collapsed">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
-            <Button Content="Login now" Click="Login_Clicked" />
-        </StackPanel>
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_36_17.png
 
-        <StackPanel Grid.Row="1" x:Name="LoggedInUI" Visibility="Collapsed">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="Welcome, {0}" />
-        </StackPanel>
+### Task 4: Add authentication UI
 
-    </Grid>
- ```
-1. Add code to handle the login on the `HomePage`
-```csharp
-    private async Task LoginAsync()
+1. Open `homePage.xaml`
+1. On the root `Grid`, add the attribute `Padding="32"`
+1. Paste the following `WaitUI` XAML inside the grid
+
+    > This block of XAML will show while the user logs in. 
+
+    ```xml
+    <StackPanel x:Name="WaitUI" Visibility="{x:Bind ShowWaitUI, Mode=OneWay}">
+        <ProgressBar IsIndeterminate="True" />
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Please wait" />
+    </StackPanel> 
+    ```
+
+1. Paste the following `LoggedOutUI` XAML below the `WaitUI` just added.
+
+    > This block of XAML will show when the suer is logged out. 
+
+    ```xml
+    <StackPanel x:Name="LoggedOutUI" Visibility="{x:Bind ShowLoggedOutUI, Mode=OneWay}">
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Authentication is required" />
+        <Button Content="Login now" Click="{x:Bind LoginAsync}" />
+    </StackPanel> 
+    ```
+1. Paste the following `LoggedInUI` XAML below the `LoggedOutUI` just added.
+
+    > This block of XAML will show when the user is logged in. 
+
+    ```xml
+    <StackPanel x:Name="LoggedInUI" Visibility="{x:Bind ShowLoggedInUI, Mode=OneWay}">
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Name="UserNameTextBlock" Text="{x:Bind User.name, Mode=OneWay}" />
+    </StackPanel> 
+    ```
+    > TODO: describe (binding) (INPC) (Boolean converter)
+
+1. Open `HomePage.xaml.cs`
+
+1. Implement `INotifyPropertyChanged`
+
+    > HomePage inherits from page. We also want to add the declaration of the INotifyPropertyChanged interface to our HomePage and implement it.
+
+    1. Add `INotifyPropertyChanged` to the class declaration
+
+    > Note: you can use the refactoring tool by hitting `CTRL+.`
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_56_22.png
+
+    1. Implement the interface. 
+    
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_57_35.png
+
+1. Copy the following code into `HomePage.xaml.cs`.
+
+    > Note: alternatively, this snippet can be also found in resources `Module2/Files/HomePage_Auth_Snippet.txt`
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_22_41.png
+
+1. Fix the namespaces
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_30_40.png
+
+    Add the following:
+
+    ```csharp
+    using System.Threading.Tasks; 
+    ```
+
+    > Note: you can use the refactoring tool by hitting `CTRL+.`
+
+1. Test your app, hit `F5`
+
+    1. Click the `Login now` button
+    1. Congratulations.
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_25_36.png
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_31_48.png
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_32_01.png
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_32_59.png
+
+### Task 5: Add automatic authentication 
+
+1. Add a `Loaded` handler to HomePage.xaml.cs
+
+    > Note: you can use the refactoring tool by hitting `CTRL+.`
+
+    ```csharp
+    public HomePage()
     {
-        var callbackUri = WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
-        var startUri = new Uri($"https://github.com/login/oauth/authorize?" +
-                                $"client_id={ClientId}&redirect_uri={Uri.EscapeUriString(callbackUri.ToString())}" +
-                                $"&scope=read_stream repo&display=popup&response_type=token");
-        var webAuthResult = await WebAuthenticationBroker.AuthenticateAsync(
-            WebAuthenticationOptions.None,
-            startUri);
-
-        switch (webAuthResult.ResponseStatus)
-        {
-            case WebAuthenticationStatus.Success:
-                var resultAsUri = new Uri(webAuthResult.ResponseData);
-                var names = new WwwFormUrlDecoder(resultAsUri.Query);
-                var code = names.Single(x => x.Name == "code").Value;
-                // var names = System.Web.HttpUtility.ParseQueryString(resultAsUri.Query);
-                // var code = names["code"];
-
-                // I now have my single use code. Now I need to get my token!
-
-                var client = new GitHubClient();
-                await client.GetTokenFromCode(code);
-                //var auths = client.GetUserAuthorizations();
-                var user = client.GetUserDetails();
-                var searchResults = client.SearchRespositories("template10");
-                var repository = client.GetRepository(searchResults.items[0].owner, "template10");
-                var issues = client.GetRepositoryIssues(repository);
-
-                var issue = new GitHubCreateIssue
-                {
-                    title = "A sample issue from UWP test app",
-                    body = "# Test issue" + Environment.NewLine +
-                            "1. First Line." + Environment.NewLine +
-                            "1. Second Line",
-                    assignee = user.login,
-                    labels = new[] {"Bug"}
-                };
-
-                //var createdIssue = client.PostRepositoryIssue(repository, issue);
-
-                Result.Text = "Complete";
-
-                break;
-
-            case WebAuthenticationStatus.UserCancel:
-                break;
-            case WebAuthenticationStatus.ErrorHttp:
-                break;
-        }
+        this.InitializeComponent();
+        this.Loaded += this.HomePage_Loaded;
     }
-```
+
+    private async void HomePage_Loaded(object sender, RoutedEventArgs e)
+    {
+        await this.LoginAsync();
+    } 
+    ```
+    Note that the handler is an asynchronous method, decorated with the `async` modifier so `LoginAsync` can be awaited. In addition, asynchronous methods, as a rule of thumb, do not return void, but `event` handlers do not need to comply to this rule, since they can't. 
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_35_50.png
+
+// end

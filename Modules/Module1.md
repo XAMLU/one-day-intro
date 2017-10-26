@@ -1,7 +1,5 @@
 # Module 1
 
-## Lab 1
-
 ### Task 1: Orientation
 
 > TODO: describe
@@ -10,6 +8,7 @@
 1. Ensure environment
     1. Windows 10 (any edition) Fall Creators Update
     1. Visual Studio 2017 (any edition) 15.4 or later
+1. TODO: Copy resources locally
 
 ### Task 2: Introduce ShellPage
 
@@ -99,4 +98,126 @@
 
     > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_55_33.png
 
-You have reached the end.
+### Task 3: Add a NavigationView
+
+> TODO: describe
+
+1. Add a folder called `Controls` to your solution
+1. Copy `NavViewEx.cs` into your `Controls` folder
+
+    > This file is located in resources `Module1/Files`
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_07_53.png
+
+    > TODO: describe
+
+1. Add new pages in the `Views` folder
+
+    1. `HomePage.xaml`
+    1. `CodePage.xaml`
+    1. `IssuesPage.xaml`
+    1. `PullPage.xaml`
+    1. `SettingsPage.xaml`
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_12_30.png
+
+1. Add the following namespace and property **to each new page**. Be sure to change the value of the `Header` property to match the name of the xaml page, as below: 
+
+    > TODO: describe
+
+    ```xml
+    xmlns:controls="using:GitHubBrowser.Controls"
+    controls:NavProperties.Header="Home page" 
+    ```
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_17_08.png
+
+1. Open `ShellPage.xaml`
+
+1. Add the following namespaces and `x:Name` directive to `ShellPage`
+
+    > TODO: describe
+
+    ```xml
+    xmlns:controls="using:GitHubBrowser.Controls"
+    xmlns:views="using:GitHubBrowser.Views" 
+    x:Name="ThisPage"
+    ```
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_20_45.png
+
+1. Copy the `Images` folder from resources into your solution
+
+    Find the folder in `Module1/Files/Images`. Copy the folder with all the files, not the files individually. These images will be used as the icons in the Hamburger menu.
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_32_11.png
+
+1. Find the default `Grid` and replace it with the Extended Navigation View code below:
+
+    > Note: alternatively, this snippet can be also found in resources `Module1/Files/ShellPage_NavViewEx_Snippet.txt`
+
+    Find:  
+
+    ```xml
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock>Hello, World!</TextBlock>
+    </Grid> 
+    ```
+
+    Replace with:
+
+    ```xml
+    <controls:NavViewEx x:Name="MainNavigationView" x:FieldModifier="Public"
+                        SettingsPageType="views:SettingsPage">
+
+        <NavigationView.HeaderTemplate>
+            <DataTemplate>
+                <CommandBar>
+                    <CommandBar.Content>
+                        <Grid Margin="12,5,0,11" VerticalAlignment="Stretch">
+                            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </CommandBar.Content>
+                </CommandBar>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
+
+        <NavigationView.MenuItems>
+            <NavigationViewItemHeader Content="Repository" />
+            <NavigationViewItem controls:NavProperties.PageType="views:HomePage" 
+                                controls:NavProperties.IsStartPage="True" 
+                                Icon="Home" Content="Home">
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:CodePage"  
+                                Content="Code">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-code-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:IssuesPage"  
+                                Content="Issues">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-issue-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem controls:NavProperties.PageType="views:PullPage"  
+                                Content="Pull Requests">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Images/git-pull-request-menu.png" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+
+    </controls:NavViewEx>
+    ```
+
+1. Run your app to test it; hit `F5`
+
+    1. Click on the buttons to navigate
+    1. Notice the page Header matches your settings
+    1. Hide and show the menu with the hamburger button
+    1. Notice the menu's Acrylic background brush
+    1. Change your app's width
+    1. Notice how the menu auto-adapts
+
+    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_36_00.png
