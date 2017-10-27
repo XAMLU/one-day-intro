@@ -8,7 +8,7 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
 
 ## Task 1: Orientation<a name="orientation"></a>
 
-> TODO: describe
+In this task you will ensure that you have a GitHub account and the correct software installed to create a UWP application. You will also copy the course files to your PC so you can access source, completed solutions, etc.
 
 1. Create GitHub account [https://github.com/join](https://github.com/join)
 1. Ensure environment
@@ -18,19 +18,21 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
 
 ## Task 2: Introduce ShellPage<a name="shellpage"></a>
 
-> TODO: describe
+In this task, you will create a new blank UWP project and modify the project so that it it utilizes a single shell page. You will learn about the default `App,xaml.cs` file contents and why we modify it. 
 
-1. Create Blank UWP app.
+Let's jump into the steps:
+
+1. First, let's create a Blank UWP app. Open the `New Project` dialog and select `Visual C#` and `Windows Universal` and then choose the `Blank App (Universal Windows)` template.
 
     ![ImageLabel](./Images/MOD01_2017-10-26_10_27_11.png)
 
-2. Name it `GitHubBrowser`
+2. Name it `GitHubBrowser` and hit `OK`.
 3. Select Fall Creators Update as both Target and Minimum Version.
 
     ![ImageLabel](./Images/MOD01_2017-10-26_10_27_54.png)
 
 4. Open Solution Explorer. Select `View/Solution Explorer` 
-5. Delete `MainPage.xaml` folder;
+5. Delete the `MainPage.xaml` file (this will also delete `MainPage.xaml.cs`);
 6. Create `Views` folder;
 7. Create a new XAML page called `ShellPage` in the `Views` folder.
 
@@ -38,7 +40,11 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
 
     ![ImageLabel](./Images/MOD01_2017-10-26_10_31_56.png)
 
-8. Replace the default grid with the following XAML code:
+    You will see two files added to the `Views` folder - `ShellPage.xaml` and `ShellPage.xaml.cs`. 
+    
+    > You may have to expand the `ShellPage.xaml` files to see the other - `ShellPage.xaml.cs` is known as the "code-behind" for the xaml file.
+
+8. Open the `ShellPage.xaml` file and replace the default grid with the following XAML code:
 
     ```xml
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -69,7 +75,7 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
     } 
     ```
 
-11. Note the error under ShellPage. This is the C# language service indicating it cannot resolve ShellPage because its namespace is not in scope.
+11. Note the error indicator under ShellPage. This is the C# language service indicating it cannot resolve `ShellPage` because its namespace is not in scope.
 
     ![ImageLabel](./Images/MOD01_2017-10-26_10_43_54.png)
 
@@ -106,8 +112,11 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
 
 ## Task 3: Add a NavigationView<a name="navview"></a>
 
-> TODO: describe
+In this task, you will add a navigation control to the application. This control `NavViewEx` is derived from the framework control `NavigationView` and simplifies setting up navigation. You will then go on to add some simple pages that will act as placeholders so you can test navigation and add more functionality in later labs.
 
+Let's proceed:
+
+1. Reopen the solution if you have closed it.
 1. Add a folder called `Controls` to your solution
 1. Copy `NavViewEx.cs` into your `Controls` folder
 
@@ -227,3 +236,9 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
     1. Notice how the menu auto-adapts
 
     ![ImageLabel](./Images/MOD01_2017-10-26_11_36_00.png)
+
+## Summary
+
+In this module, you created the basic UWP application. You modified the app so that instead of creating a `Frame` and navigating to `MainPage`, the app just creates an instance of `ShellPage` and loads it directly into the application window content. You then changed the application default theme to Dark. You then went on to adding the `NavViewEx` control and implemented a very basic navigation to essentially empty pages.
+
+Congratulations - Module 1 is complete. In the next module you will add authentication to the app and implement some services.
