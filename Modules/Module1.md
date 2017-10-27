@@ -5,7 +5,6 @@ Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you 
 1. [Orientation](#orientation)
 1. [Introduce ShellPage](#shellpage)
 1. [Add a NavigationView](#navview)
-1. [Orientation](#orientation)
 
 ## Task 1: Orientation<a name="orientation"></a>
 
