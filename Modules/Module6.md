@@ -68,39 +68,39 @@
 
 1. Find the default `Grid` in `CreateIssuePage` and replace it with the XAML below:
 
-    > Note: alternatively, this snippet can be also found in resources `Module6/Files/CreateIssuePage_Snippet.txt`
+  > Note: alternatively, this snippet can be also found in resources `Module6/Files/CreateIssuePage_Snippet.txt`
 
-    Find:  
+  Find:  
 
-    ```xml
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-      
-    </Grid> 
-    ```
+  ```xml
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+  </Grid> 
+  ```
 
-    Replace with:
-    ```xml
-    <Page.DataContext>
-        <vm:CreateIssuePageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
+  Replace with:
+  ```xml
+  <Page.DataContext>
+      <vm:CreateIssuePageViewModel x:Name="ViewModel" />
+  </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="16">
-            <TextBox Header="Title" Text="{x:Bind ViewModel.Title.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Stretch" />
-            <TextBlock Text="{x:Bind ViewModel.Title.ErrorString, Mode=OneWay}" Foreground="Red" />
-            <Grid Margin="0,16,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" IsSpellCheckEnabled="True" Height="400" Header="Body"   Text="{x:Bind ViewModel.Body.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="BodyTextBox" HorizontalAlignment="Stretch" />
-                <controls:MarkdownTextBlock IsEnabled="False" Margin="8,32,16,0" VerticalAlignment="Stretch" Text="{x:Bind BodyTextBox.Text, Mode=OneWay}" Grid.Column="1" />
-            </Grid>
-            <TextBlock Text="{x:Bind ViewModel.Body.ErrorString, Mode=OneWay}" Foreground="Red" />
-            <Button Margin="0,16,0,0" Command="{x:Bind ViewModel.CreateCommand}">Create Issue</Button>
-        </StackPanel>
-    </Grid>
-    ```
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      <StackPanel Margin="16">
+          <TextBox Header="Title" Text="{x:Bind ViewModel.Title.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Stretch" />
+          <TextBlock Text="{x:Bind ViewModel.Title.ErrorString, Mode=OneWay}" Foreground="Red" />
+          <Grid Margin="0,16,0,0">
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition />
+                  <ColumnDefinition />
+              </Grid.ColumnDefinitions>
+              <TextBox AcceptsReturn="True" TextWrapping="Wrap" IsSpellCheckEnabled="True" Height="400" Header="Body"   Text="{x:Bind ViewModel.Body.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="BodyTextBox" HorizontalAlignment="Stretch" />
+              <controls:MarkdownTextBlock IsEnabled="False" Margin="8,32,16,0" VerticalAlignment="Stretch" Text="{x:Bind BodyTextBox.Text, Mode=OneWay}" Grid.Column="1" />
+          </Grid>
+          <TextBlock Text="{x:Bind ViewModel.Body.ErrorString, Mode=OneWay}" Foreground="Red" />
+          <Button Margin="0,16,0,0" Command="{x:Bind ViewModel.CreateCommand}">Create Issue</Button>
+      </StackPanel>
+  </Grid>
+  ```
 
   > Note: alternatively, this snippet can be also found in resources `Module6/Files/CreateIssuePage.xaml`
 
@@ -113,7 +113,7 @@
   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
   ```
 
-  > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_47_13.png
+  ![ImageLabel](.\Images\MOD06_2017-10-27_14_47_13.png)
 
 ## Task 4: Global Button<a name="globalbutton"></a>
 
@@ -141,7 +141,7 @@
   }
   ```
 
-  > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_49_26.png
+  ![ImageLabel](.\Images\MOD06_2017-10-27_14_49_26.png)
 
   > TODO: discuss elemeting binding
 
