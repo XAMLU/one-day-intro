@@ -4,13 +4,13 @@
 
 1. Copy `MessageService.cs` to the `Services` folder.
 
-        Most memory leaks in C# are from event handlers across object scopes. Objects with a resulting hard reference cannot be removed from memory by garbage collection. Using a messaging service, like the MVVMLight `MessengerService` we use here, developers can listen for messages (called subscribing) instead of events, this loose coupling side-stepping the necessity for hard references between objects. Messaging is a common pattern in XAML apps using MVVM.
+    > Note: Most memory leaks in C# are from event handlers across object scopes. Objects with a resulting hard reference cannot be removed from memory by garbage collection. Using a messaging service, like the MVVMLight `MessengerService` we use here, developers can listen for messages (called subscribing) instead of events, this loose coupling side-stepping the necessity for hard references between objects. Messaging is a common pattern in XAML apps using MVVM.
         
     `MessageService` is a simplified wrapper of the MVVMLight `MessengerService` intended specifically for use in this project. As with all View Services, our `MessageService` does not expose every feature of the underlying library, it simply meets the needs of this particular project. 
     
     > Find the `cs` file in `Module4/Files`
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 15_55_02.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_15_55_02.png)
 
 1. In Visual Studio, add a folder `Messages` at the root level of your project.
 
@@ -65,7 +65,7 @@
     } 
     ```
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_07_22.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_07_22.png)
 
 1. Add the following logic into the `ShellPage` class constructor
 
@@ -78,23 +78,23 @@
 
     > Note: you can use the refactoring tool by hitting `CTRL+.`
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_09_18.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_09_18.png)
 
     1. Add the backing field for `_messageService`
 
     > Note: you can use the refactoring tool by hitting `CTRL+.
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_10_25.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_10_25.png)
 
     1. Add the subscription callback method `HandleAuthChanged` for the message.
 
     > Note: you can use the refactoring tool by hitting `CTRL+.
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_12_29.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_12_29.png)
 
 1. Implement `HandleAuthChanged`
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_14_02.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_14_02.png)
 
     ```csharp
     private void HandleAuthChanged(Messages.GitHubStatusChangedMessage obj)
@@ -118,13 +118,13 @@
     IsEnabled="{x:Bind EnableNavigation, Mode=OneWay}"
     ```
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_26_47.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_26_47.png)
 
 1. Test the app, hit `F5`
 
     1. Notice the navigation buttons other than Home and Settings are disabled. 
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_29_54.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_29_54.png)
 
     > Currently, nothing sends  `GitHubStatusChangedMessage` so there is no way, yet, to enable our navigation buttons. 
 
@@ -245,6 +245,6 @@
     1. In `Home`, Search for and select a default repository.
     1. Notice the nvigation buttons are enabled.
 
-    ![ImageLabel](./Images/MOD04_2017-10-26 16_49_50.png
+    ![ImageLabel](./Images/MOD04_2017-10-26_16_49_50.png)
 
 // end

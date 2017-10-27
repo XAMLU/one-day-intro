@@ -107,7 +107,7 @@
 
     > This file is located in resources `Module1/Files`
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_07_53.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_07_53.png)
 
     > TODO: describe
 
@@ -119,7 +119,7 @@
     1. `PullPage.xaml`
     1. `SettingsPage.xaml`
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_12_30.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_12_30.png)
 
 1. Add the following namespace and property **to each new page**. Be sure to change the value of the `Header` property to match the name of the xaml page, as below: 
 
@@ -130,7 +130,7 @@
     controls:NavProperties.Header="Home page" 
     ```
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_17_08.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_17_08.png)
 
 1. Open `ShellPage.xaml`
 
@@ -144,13 +144,13 @@
     x:Name="ThisPage"
     ```
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_20_45.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_20_45.png)
 
 1. Copy the `Images` folder from resources into your solution
 
     Find the folder in `Module1/Files/Images`. Copy the folder with all the files, not the files individually. These images will be used as the icons in the Hamburger menu.
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_32_11.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_32_11.png)
 
 1. Find the default `Grid` and replace it with the Extended Navigation View code below:
 
@@ -220,4 +220,4 @@
     1. Change your app's width
     1. Notice how the menu auto-adapts
 
-    ![ImageLabel](./Images/MOD01_2017-10-26 11_36_00.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_11_36_00.png)

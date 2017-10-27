@@ -10,11 +10,11 @@
 
     1. Open the NuGet Package Manager Console
     
-    > (reusing image from module 2) C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_26_42.png
+    > (reusing image from module 2) C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26_12_26_42.png)
 
     2. Type the following into the console: `Install-Package Microsoft.Toolkit.Uwp.UI.Controls`
 
-    ![ImageLabel](./Images/MOD05_2017-10-26 17_10_02.png
+    ![ImageLabel](./Images/MOD05_2017-10-26_17_10_02.png)
 
 ### Task 2: update logic
 
@@ -22,7 +22,7 @@
 
     > Find both `cs` files in `Module5/Files`
 
-    ![ImageLabel](./Images/MOD05_2017-10-26 17_16_07.png
+    ![ImageLabel](./Images/MOD05_2017-10-26_17_16_07.png)
 
     > TODO discuss ObservableCollection
 
@@ -40,7 +40,7 @@
 
     The XAML above will require a new xml namespace declaration to your ViewModels namespace, as shown in the image below.
 
-    ![ImageLabel](./Images/MOD05_2017-10-26 17_13_57.png
+    ![ImageLabel](./Images/MOD05_2017-10-26_17_13_57.png)
 
 1. Find the default `Grid` in `IssuesPage` and replace it with the XAML below:
 
@@ -76,7 +76,7 @@
     2. Pivot the Issues closed and open
     3. Notice your `TextBlocks` visibility changing
 
-    ![ImageLabel](./Images/MOD05_2017-10-26 17_22_08.png
+    ![ImageLabel](./Images/MOD05_2017-10-26_17_22_08.png)
 
 ### Task 3: update UI
 
@@ -104,7 +104,7 @@
 
     We do not have the namespace for the UWP Toolkit on our page yet. Use the refactoring tools to add the XAML namespace to the UWP toolkit.
 
-    ![ImageLabel](./Images/MOD05_2017-10-26 17_29_26.png
+    ![ImageLabel](./Images/MOD05_2017-10-26_17_29_26.png)
 
 1. Just like the previous step: Inside the second `PivotItem` with its `Header` set to 'Closed Issues" we will replace the entire block with a block (below) containing a `MasterDetailView`, from the UWP Toolkit, which we will use to display issues and issue detail. 
 
