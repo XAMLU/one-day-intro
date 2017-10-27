@@ -18,9 +18,12 @@
                 <CommandBar>
                     <CommandBar.Content>
                         <Grid Margin="12,5,0,11" VerticalAlignment="Stretch">
-                            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
+                            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBlockStyle}" 
+                                       TextWrapping="NoWrap" VerticalAlignment="Bottom"/>
                         </Grid>
                     </CommandBar.Content>
+                    <AppBarButton IsEnabled="{Binding EnableNavigation, ElementName=ThisPage, Mode=OneWay}"
+                                  Icon="Add" Label="New Issue" Click="NewIssue_Click" />
                 </CommandBar>
             </DataTemplate>
         </NavigationView.HeaderTemplate>

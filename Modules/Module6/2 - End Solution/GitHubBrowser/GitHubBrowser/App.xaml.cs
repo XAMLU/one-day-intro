@@ -32,6 +32,7 @@ namespace GitHubBrowser
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             var shell = new ShellPage();
+            Services.NavigationService.Setup(shell.MainNavigationView);
             Window.Current.Content = shell;
             Window.Current.Activate();
         }

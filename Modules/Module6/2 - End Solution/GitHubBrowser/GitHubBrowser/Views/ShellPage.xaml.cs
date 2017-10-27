@@ -51,5 +51,12 @@ namespace GitHubBrowser.Views
             }
         }
 
+        private void NewIssue_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var nav = new NavigationService();
+            nav.Navigate(typeof(Views.CreateIssuePage));
+        }
+
+
     }
 }
