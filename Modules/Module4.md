@@ -1,6 +1,9 @@
 # Module 4
+In this module you will implement messaging and command patterns.
+**TOC**
+1. [Implement messaging](#messages)
 
-### Task 1: implement messaging
+### Task 1: Implement messaging<a name="messages"></a>
 
 1. Copy `MessageService.cs` to the `Services` folder.
 
