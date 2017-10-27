@@ -1,5 +1,6 @@
 # Module 4
 In this module you will implement messaging and command patterns.
+
 **TOC**
 1. [Implement messaging](#messages)
 
