@@ -6,79 +6,67 @@ The purpose of this document is to provide a the details necessary to guide a cl
 
 The course is broken into a number of sections:
 
-1. Getting started
+1. Getting started & Basic Navigation
     * Discuss
         * Discuss XAML & UWP
         * Where does Xamarin fit in?
             * Code sharing patterns
-    * Code
-        * Create basic app
-1. Implementing Navigation
+    * Module
+        * Course Orientation
+        * Introduce Shell Page
+        * Add a Navigation View
+1. Implementing Authentication
     * Discuss
         * Design - Fluent
         * Adaptive
-        * Styles & Resources
+        * Web Auth Broker
         * OAuth
-    * Code
-        * Create Shell
-        * Update App to launch shell
-        * Add nuget:
-            * `NavViewEx`
-        * Implement Simple Pages
-            * `HomePage`
-            * `CodePage`
-            * `IssuesPage`
-            * `SettingsPage`
-        * Implement basic navigation with `NavViewEx`
-            > We have services here before we discuss them. May need to think about this some more...
-        * Add Services
-            * `GitHubService`
-        * Implement login in code-behind `HomePage.xaml.cs`
-            * Copy in and explain UI
-            * Copy in and explain code-behind
+        * Services
+    * Module
+        * App Callback
+        * Setup app in GitHub
+        * Add some services to App
+        * Add Authentication UI
+        * Add auto-authentication to App
 1. Implementing MVVM, Settings, etc.
     * Discuss
         * MVVM & INPC
-        * Services
-    * Code
-        * Add nuget:
-            * `XamlU.Demo.GitHubLibrary`
-            * `MVVMLightLibs`
-                * Explain differences between the MVVMLight packages
-        * Add Services
-            * `SettingsService`
-            * `GitHubService`
-        * Add `HomePageViewModel`
-        * Add view model binding to `HomePage.xaml.cs`
-        * Move Auth into `HomePageViewModel`
+            * Talk about MVVMLight. Where does T10 fit in?
+    * Module
+        * Add MVVMLight
+        * Add a ViewModel
+        * Implement Repository Search
+        * Implement Settings
 1. Messaging and Commanding
     * Discuss
         * Messaging
         * Commanding
-    * Code
-        * Use message to enable/disable navigation when not logged in
-        * Context menu / slide control for an issue
-            > Is this still relevant given the changes?
-            
+    * Module
+        * Implement messaging & commands
 1. Issues, Master/Detail, Pivot for Issues
     * Discuss
         * Libraries
         * Microsoft UWP Community Toolkit
-    * Code
-        * Complete `IssuesPage`
-        * Complete `IssuesPageViewModel`
-
+        * ObservableCollection
+        * Item ViewModels
+        * LINQ
+        * Styles & Resources
+    * Module
+        * UWP Toolkit NuGet Package
+        * Update Issues Logic
+        * Update Issues UI
 1. Data entry and field/form validation
     * Discuss
         * What is validation and why do we need it?
         * What support for validation ships in UWP?
         * JSON, REST and WebClient
             > Show the source for the `GitHubClient`?
-    * Code
-        * Add `CreateCommentPage`
-        * Add `CreateCommentPageViewModel`
-        * Add button to `IssuesPage` to launch the `CreateCommentPage` and hook up navigation
-            > Discuss the system back button...
+        * Global back button & back stack
+    * Module
+        * Add NavigationSerivce
+        * Add Validation Property Helper
+        * Add create issue button to global nav bar
+        * Add Create Issue Page
 1. Additional topics
     * Telemetry
     * Deployment

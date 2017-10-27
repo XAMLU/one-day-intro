@@ -1,7 +1,7 @@
 # Module 1
 Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you are here!. This module will walk through a few steps to get started and then we will dive into creating the basic application. 
 
-**TOC**
+### TOC
 1. [Orientation](#orientation)
 1. [Introduce ShellPage](#shellpage)
 1. [Add a NavigationView](#navview)

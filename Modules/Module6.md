@@ -1,5 +1,7 @@
 # Module 6
+
 **TOC**
+
 1. [Navigation Service](#navigationservice)
 1. [Add Validation Property Helper](#validation)
 1. [Global Button](#globalbutton)
