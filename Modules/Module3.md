@@ -1,6 +1,13 @@
 # Module 3
+In this module, you will add a Model-View-ViewModel implementation to the application, implement a simple settings service and add a repository search function.
 
-### Task 1: add a reference to the MVVMLight NuGet package
+**TOC**
+1. [Add MVVMLight NuGet package](#mvvmlight)
+1. [Add a ViewModel](#viewmodel)
+1. [Implement Search](#search)
+1. [Implement Settings](#settings)
+
+### Task 1: Add a reference to the MVVMLight NuGet package<a name="mvvmlight"></a>
 
 1. Add a reference to the `MVVM Light` NuGet package 
 
@@ -14,7 +21,8 @@
 
     ![ImageLabel](./Images/MOD03_2017-10-26_13_55_24.png)
 
-### Task 2: move `HomePage.xaml.cs` code-behind to `HomePageViewModel.cs` 
+### Task 2: Add a ViewModel<a name="viewmodel"></a>
+In this task, you will move code from the `HomePage.xaml.cs` code-behind to `HomePageViewModel.cs`
 
 1. In Visual Studio, add a folder `ViewModels` at the root level of your project.
 
@@ -73,7 +81,7 @@
     > TODO: talk about seperation of concerns
     > TODO: command
 
-### Task 3: implement Search
+### Task 3: Implement Search<a name="search"></a>
 
 1. In Visual Studio, add a folder `Converters` at the root level of your project.
 
@@ -119,7 +127,7 @@
     ![ImageLabel](./Images/MOD03_2017-10-26_14_31_27.png)
 
 
-### Task 3: implement Settings
+### Task 4: Implement Settings<a name="settings"></a>
 
 > TODO : discuss Settings Service
 
