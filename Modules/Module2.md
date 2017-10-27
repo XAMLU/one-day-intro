@@ -15,7 +15,7 @@
 
     > Note: the debug value will have curly braces at the start and the end `{ms-app://value}`, be sure and remove them so your URI is the correct syntax, like this `ms-app://value`. 
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_04_35.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_04_35.png
 
 1. Copy your `Callback URI` to somewhere handy
 
@@ -29,12 +29,12 @@
         1. **Application description** "Sample app for Oredev"
         1. **Authorization Callback URL** Use the result from Task 1 above
 
-        > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_17_46.png
+        ![ImageLabel](./Images/MOD02_2017-10-26 12_17_46.png
 
     1. Click `Register application`.
     1. Copy *your* `Client Id` and `Client Secret` to somewhere handy
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_20_30.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_20_30.png
 
 ### Task 3: Add services to your app
 
@@ -42,11 +42,11 @@
 
     1. Open the NuGet Package Manager Console
     
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_26_42.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_26_42.png
 
     2. Type the following into the console: `Install-Package XamlU.Demo.GithubLibrary`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_28_32.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_28_32.png
 
     > TODO: show the source code
 
@@ -59,12 +59,12 @@
 
 1. Update values in `SettingsService.cs`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_35_11.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_35_11.png
 
     1. Replace `<your client id>` with your client id (from above)
     2. Replace `<your secret>' with your secret (from above)
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_36_17.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_36_17.png
 
 ### Task 4: Add authentication UI
 
@@ -112,21 +112,21 @@
 
     > Note: you can use the refactoring tool by hitting `CTRL+.`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_56_22.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_56_22.png
 
     1. Implement the interface. 
     
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 12_57_35.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 12_57_35.png
 
 1. Copy the following code into `HomePage.xaml.cs`.
 
     > Note: alternatively, this snippet can be also found in resources `Module2/Files/HomePage_Auth_Snippet.txt`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_22_41.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_22_41.png
 
 1. Fix the namespaces
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_30_40.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_30_40.png
 
     Add the following:
 
@@ -141,13 +141,13 @@
     1. Click the `Login now` button
     1. Congratulations.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_25_36.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_25_36.png
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_31_48.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_31_48.png
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_32_01.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_32_01.png
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_32_59.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_32_59.png
 
 ### Task 5: Add automatic authentication 
 
@@ -169,6 +169,6 @@
     ```
     Note that the handler is an asynchronous method, decorated with the `async` modifier so `LoginAsync` can be awaited. In addition, asynchronous methods, as a rule of thumb, do not return void, but `event` handlers do not need to comply to this rule, since they can't. 
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26 13_35_50.png
+    ![ImageLabel](./Images/MOD02_2017-10-26 13_35_50.png
 
 // end

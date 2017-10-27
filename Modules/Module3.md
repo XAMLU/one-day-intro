@@ -12,7 +12,7 @@
 
     2. Type the following into the console: `Install-Package MvvmLightLibs`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 13_55_24.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 13_55_24.png
 
 ### Task 2: move `HomePage.xaml.cs` code-behind to `HomePageViewModel.cs` 
 
@@ -32,7 +32,7 @@
 
     The XAML above will require a new xml namespace declaration to your  ViewModels namespace, as shown in the image below.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_06_27.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_06_27.png
 
 1. Update your XAML bindings to point to the view-model instead of the code-behind. Note that `{x:Bind ShowWaitUI}`, as an example, is now `{x:Bind ViewModel.ShowWaitUI}`.
 
@@ -54,7 +54,7 @@
     </StackPanel> 
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_10_56.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_10_56.png
 
 1. We can now remove the unused code in the `HomePage.xaml.cs` code-behind file. 
 
@@ -65,7 +65,7 @@
     1. Delete all the properties.
     1. Delete `LoginAsync()`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_15_23.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_15_23.png
 
 1. Run the app, hit `F5`.
 
@@ -93,7 +93,7 @@
     </Page.Resources>
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_27_34.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_27_34.png
 
 1. Replaced `LoggedInUI` with different XAML
 
@@ -114,9 +114,9 @@
     1. Make the repository your default
     1. Notice the current repository changed
  
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_29_56.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_29_56.png
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_31_27.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_31_27.png
 
 
 ### Task 3: implement Settings
@@ -143,7 +143,7 @@
 
     The XAML above will require a new xml namespace declaration to your `ViewModels` namespace, as shown in the image below.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD03_2017-10-26 14_47_40.png
+    ![ImageLabel](./Images/MOD03_2017-10-26 14_47_40.png
 
 1. Find the default `Grid` in `SettingsPage` and replace it with the Settings UI below:
 
@@ -177,4 +177,4 @@
     1. Clear the default repository
     1. Ensure no default repository is set
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 15_24_27.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 15_24_27.png

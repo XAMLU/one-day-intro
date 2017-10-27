@@ -1,36 +1,36 @@
 # Module 1
 
-### Task 1: Orientation
+## Task 1: Orientation
 
 > TODO: describe
 
-1. Create GitHub account https://github.com/join
+1. Create GitHub account [https://github.com/join](https://github.com/join)
 1. Ensure environment
     1. Windows 10 (any edition) Fall Creators Update
     1. Visual Studio 2017 (any edition) 15.4 or later
 1. TODO: Copy resources locally
 
-### Task 2: Introduce ShellPage
+## Task 2: Introduce ShellPage
 
 > TODO: describe
 
-1. Create Blank UWP app 
+1. Create Blank UWP app.
 
-> C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_27_11.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_10_27_11.png)
 
 2. Name it `GitHubBrowser`
 3. Select Fall Creators Update as both Target and Minimum Version.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_27_54.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_10_27_54.png)
 
 4. Open Solution Explorer. Select `View/Solution Explorer` 
 5. Delete `MainPage.xaml` folder;
 6. Create `Views` folder;
-7. Create a newXAML page called `ShellPage` in the `Views` folder.
+7. Create a new XAML page called `ShellPage` in the `Views` folder.
 
     > Right-click the `Views` folder, select `Blank Page` in the `Add New item` dialog.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_31_56.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_10_31_56.png)
 
 8. Replace the default grid with the following XAML code:
 
@@ -65,7 +65,7 @@
 
 11. Note the error under ShellPage. This is the C# language service indicating it cannot resolve ShellPage because its namespace is not in scope.
 
-> C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_43_54.png
+    ![ImageLabel](./Images/MOD01_2017-10-26_10_43_54.png)
 
 12. Add the using statement to Views.
 
@@ -77,7 +77,7 @@
     1. Build your app by hitting `F6`
     2. Run your app by hitting `F5` 
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_54_10.png
+    ![Blank_Light](./Images/MOD01_2017-10-26_10_54_10.png)
 
 14. Change the app theme to `Dark`
 
@@ -96,9 +96,9 @@
 
     3. Test your app again by running it.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 10_55_33.png
+    ![Blank_Dark](./Images/MOD01_2017-10-26_10_55_33.png)
 
-### Task 3: Add a NavigationView
+## Task 3: Add a NavigationView
 
 > TODO: describe
 
@@ -107,7 +107,7 @@
 
     > This file is located in resources `Module1/Files`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_07_53.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_07_53.png
 
     > TODO: describe
 
@@ -119,7 +119,7 @@
     1. `PullPage.xaml`
     1. `SettingsPage.xaml`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_12_30.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_12_30.png
 
 1. Add the following namespace and property **to each new page**. Be sure to change the value of the `Header` property to match the name of the xaml page, as below: 
 
@@ -130,7 +130,7 @@
     controls:NavProperties.Header="Home page" 
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_17_08.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_17_08.png
 
 1. Open `ShellPage.xaml`
 
@@ -144,13 +144,13 @@
     x:Name="ThisPage"
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_20_45.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_20_45.png
 
 1. Copy the `Images` folder from resources into your solution
 
     Find the folder in `Module1/Files/Images`. Copy the folder with all the files, not the files individually. These images will be used as the icons in the Hamburger menu.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_32_11.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_32_11.png
 
 1. Find the default `Grid` and replace it with the Extended Navigation View code below:
 
@@ -220,4 +220,4 @@
     1. Change your app's width
     1. Notice how the menu auto-adapts
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD01_2017-10-26 11_36_00.png
+    ![ImageLabel](./Images/MOD01_2017-10-26 11_36_00.png

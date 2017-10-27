@@ -10,7 +10,7 @@
     
     > Find the `cs` file in `Module4/Files`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 15_55_02.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 15_55_02.png
 
 1. In Visual Studio, add a folder `Messages` at the root level of your project.
 
@@ -65,7 +65,7 @@
     } 
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_07_22.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_07_22.png
 
 1. Add the following logic into the `ShellPage` class constructor
 
@@ -78,23 +78,23 @@
 
     > Note: you can use the refactoring tool by hitting `CTRL+.`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_09_18.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_09_18.png
 
     1. Add the backing field for `_messageService`
 
     > Note: you can use the refactoring tool by hitting `CTRL+.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_10_25.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_10_25.png
 
     1. Add the subscription callback method `HandleAuthChanged` for the message.
 
     > Note: you can use the refactoring tool by hitting `CTRL+.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_12_29.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_12_29.png
 
 1. Implement `HandleAuthChanged`
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_14_02.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_14_02.png
 
     ```csharp
     private void HandleAuthChanged(Messages.GitHubStatusChangedMessage obj)
@@ -118,13 +118,13 @@
     IsEnabled="{x:Bind EnableNavigation, Mode=OneWay}"
     ```
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_26_47.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_26_47.png
 
 1. Test the app, hit `F5`
 
     1. Notice the navigation buttons other than Home and Settings are disabled. 
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_29_54.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_29_54.png
 
     > Currently, nothing sends  `GitHubStatusChangedMessage` so there is no way, yet, to enable our navigation buttons. 
 
@@ -245,6 +245,6 @@
     1. In `Home`, Search for and select a default repository.
     1. Notice the nvigation buttons are enabled.
 
-    > C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD04_2017-10-26 16_49_50.png
+    ![ImageLabel](./Images/MOD04_2017-10-26 16_49_50.png
 
 // end
