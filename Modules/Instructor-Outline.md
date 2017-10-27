@@ -30,8 +30,13 @@ The course is broken into a number of sections:
         * App Callback
         * Setup app in GitHub
         * Add some services to App
+            * Discuss the source for `GitHubLibrary`
+            * Discuss `HttpClient` and show the debug diagnostics
         * Add Authentication UI
+            * Discuss Binding vs x:Bind, INPC and Converters
+            * Discuss `Visibility` vs Visual States.
         * Add auto-authentication to App
+            * Discuss page/control lifecycle events such as Loaded
 1. Implementing MVVM, Settings, etc.
     * Discuss
         * MVVM & INPC
