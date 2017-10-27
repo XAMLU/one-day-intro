@@ -1,6 +1,13 @@
 # Module 1
+Welcome to Module 1 of the One Day Introduction to XAML course. We are glad you are here!. This module will walk through a few steps to get started and then we will dive into creating the basic application. 
 
-## Task 1: Orientation
+**TOC**
+1. [Orientation](#orientation)
+1. [Introduce ShellPage](#shellpage)
+1. [Add a NavigationView](#navview)
+1. [Orientation](#orientation)
+
+## Task 1: Orientation<a name="orientation"></a>
 
 > TODO: describe
 
@@ -10,7 +17,7 @@
     1. Visual Studio 2017 (any edition) 15.4 or later
 1. TODO: Copy resources locally
 
-## Task 2: Introduce ShellPage
+## Task 2: Introduce ShellPage<a name="shellpage"></a>
 
 > TODO: describe
 
@@ -98,7 +105,7 @@
 
     ![Blank_Dark](./Images/MOD01_2017-10-26_10_55_33.png)
 
-## Task 3: Add a NavigationView
+## Task 3: Add a NavigationView<a name="navview"></a>
 
 > TODO: describe
 
