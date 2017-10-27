@@ -9,7 +9,7 @@
 
 1. Create `NavigationService.cs` in the `Services` folder.
 
-    > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_28_21.png
+    ![ImageLabel](./Images/MOD06_2017-10-27_14_28_21.png)
 
 1. Implement our new navigation service
 
@@ -34,7 +34,7 @@
 
   > Note: you can use the refactoring tool by hitting `CTRL+.`
 
-  > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_29_15.png
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_29_15.png)
 
 1. Open `App.xaml.cs`
 
@@ -44,7 +44,7 @@
   Services.NavigationService.Setup(shell.MainNavigationView);
   ```
 
-  > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_34_06.png
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_34_06.png)
 
   > TODO: discuss, why not until now?
 
@@ -54,7 +54,7 @@
 
     > Find the `cs` file in `Module6/Files`
 
-    ![ImageLabel](.\Images\MOD06_2017-10-27_14_18_26.png)
+    ![ImageLabel](./Images/MOD06_2017-10-27_14_18_26.png)
 
 ## Task 3: Add Create Issue<a name="createissue"></a>
 
@@ -113,7 +113,7 @@
   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
   ```
 
-  ![ImageLabel](.\Images\MOD06_2017-10-27_14_47_13.png)
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_47_13.png)
 
 ## Task 4: Global Button<a name="globalbutton"></a>
 
@@ -127,7 +127,7 @@
     Icon="Add" Label="New Issue" Click="NewIssue_Click" />
   ```
 
-  ![ImageLabel](.\Images\MOD06_2017-10-27_14_24_20.png)
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_24_20.png)
 
 1. Open `ShellPage.xaml.cs`
 
@@ -141,7 +141,7 @@
   }
   ```
 
-  ![ImageLabel](.\Images\MOD06_2017-10-27_14_49_26.png)
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_49_26.png)
 
   > TODO: discuss elemeting binding
 
@@ -160,6 +160,6 @@
     1. Optional: add mark down in the `Body`
     1. Create an `Issue`
 
-  > C:\git.repos\one-day-intro\Modules\Images\MOD06_2017-10-27_14_51_06.png
+  ![ImageLabel](./Images/MOD06_2017-10-27_14_51_06.png)
 
 
