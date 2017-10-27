@@ -1,6 +1,10 @@
 # Module 5
+**TOC**
+1. [UWP Toolkit NuGet package](#uwptoolkit)
+1. [Update Logic](#updatelogic)
+1. [Update UI](#updateui)
 
-### Task 1: add a reference to the UWP Toolkit NuGet package
+## Task 1: Add a reference to the UWP Toolkit NuGet package<a name="uwptoolkit"></a>
 
 1. Add a reference to the `UWP Toolkit` NuGet package 
 
@@ -16,7 +20,7 @@
 
     ![ImageLabel](./Images/MOD05_2017-10-26_17_10_02.png)
 
-### Task 2: update logic
+## Task 2: Update Logic<a name="updatelogic"></a>
 
 1. Copy `IssueViewModel.cs` and `IssuesPageViewModel.cs` into the `ViewModels` folder.
 
@@ -78,7 +82,7 @@
 
     ![ImageLabel](./Images/MOD05_2017-10-26_17_22_08.png)
 
-### Task 3: update UI
+## Task 3: Update UI<a name="updateui"></a>
 
 1. Make a control-level resources available inside the `Pivot`, but adding `ListItemTemplate` and `ItemDetailTemplate` in the `Resources` property. This is quite a bit of XAML, so copy it from the snippet file.
 
