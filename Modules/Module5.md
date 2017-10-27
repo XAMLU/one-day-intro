@@ -1,4 +1,7 @@
 # Module 5
+
+In this module, you will add a MasterDetail view from the UWP Toolkit and implement a page that displays the open and closed issues for a repository.
+
 **TOC**
 1. [UWP Toolkit NuGet package](#uwptoolkit)
 1. [Update Logic](#updatelogic)
