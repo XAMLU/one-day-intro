@@ -1,6 +1,13 @@
 # Module 2
+In this module, you will add basic navigation to your application and implement OAuth authentication to GitHub.
+**TOC**
+1. [Get your app's callback URI](#callback)
+1. [Setup your app in Github](#github)
+1. [Add services to your app](#services)
+1. [Add authentication UI](#auth)
+1. [Add automatic authentication](#auto)
 
-### Task 1: get your app's callback URI
+## Task 1: Get your app's callback URI<a name="callback"></a>
 
 1. Place the following code in the constructor of `App.xaml.cs`.
 
@@ -19,7 +26,7 @@
 
 1. Copy your `Callback URI` to somewhere handy
 
-### Task 2: Setup your app in Github
+## Task 2: Setup your app in Github<a name="github"></a>
 
 1. Open the following url: [https://github.com/settings/applications/new](https://github.com/settings/applications/new)
 
@@ -36,7 +43,7 @@
 
     ![ImageLabel](./Images/MOD02_2017-10-26_12_20_30.png)
 
-### Task 3: Add services to your app
+## Task 3: Add services to your app<a name="services"></a>
 
 1. Add a reference to the `Xamlu.Demo.GitHubLibrary` NuGet package 
 
@@ -62,11 +69,11 @@
     ![ImageLabel](./Images/MOD02_2017-10-26_12_35_11.png)
 
     1. Replace `<your client id>` with your client id (from above)
-    2. Replace `<your secret>' with your secret (from above)
+    2. Replace `<your secret>` with your secret (from above)
 
     ![ImageLabel](./Images/MOD02_2017-10-26_12_36_17.png)
 
-### Task 4: Add authentication UI
+## Task 4: Add authentication UI<a name="auth"></a>
 
 1. Open `homePage.xaml`
 1. On the root `Grid`, add the attribute `Padding="32"`
@@ -149,7 +156,7 @@
 
     ![ImageLabel](./Images/MOD02_2017-10-26_13_32_59.png)
 
-### Task 5: Add automatic authentication 
+## Task 5: Add automatic authentication<a name="auto"></>
 
 1. Add a `Loaded` handler to HomePage.xaml.cs
 
