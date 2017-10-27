@@ -13,14 +13,18 @@ The course is broken into a number of sections:
             * Code sharing patterns
     * Module
         * Course Orientation
+            * Discuss where to find resources
         * Introduce Shell Page
+            * Discuss Windows 10 SDK versions and compatability
         * Add a Navigation View
+            * Discuss `NavigationView` vs. `NavViewEx`
+            * Discuss `NavProperties` attached properties
+            * Discuss `x:Name` Page proerpty and element binding
 1. Implementing Authentication
     * Discuss
         * Design - Fluent
         * Adaptive
-        * Web Auth Broker
-        * OAuth
+        * OAuth & Web Auth Broker
         * Services
     * Module
         * App Callback

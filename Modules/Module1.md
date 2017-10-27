@@ -14,11 +14,13 @@ In this task you will ensure that you have a GitHub account and the correct soft
 1. Ensure environment
     1. Windows 10 (any edition) Fall Creators Update
     1. Visual Studio 2017 (any edition) 15.4 or later
-1. TODO: Copy resources locally
+    > **Instructor Sync Point:** Discuss Windows 10 SDK versions and compatability
+
+1. > **TODO**: Download the resources from the GitHub repository or from the USB stick.
 
 ## Task 2: Introduce ShellPage<a name="shellpage"></a>
 
-In this task, you will create a new blank UWP project and modify the project so that it it utilizes a single shell page. You will learn about the default `App,xaml.cs` file contents and why we modify it. 
+In this task, you will create a new blank UWP project and modify the project so that it it utilizes a single shell page. You will learn about the default `App,xaml.cs` file contents and why we modify it.
 
 Let's jump into the steps:
 
@@ -31,6 +33,8 @@ Let's jump into the steps:
 
     ![ImageLabel](./Images/MOD01_2017-10-26_10_27_54.png)
 
+    > **Instructor Sync Point:** Discuss Windows 10 SDK versions and compatability
+    
 4. Open Solution Explorer. Select `View/Solution Explorer` 
 5. Delete the `MainPage.xaml` file (this will also delete `MainPage.xaml.cs`);
 6. Create `Views` folder;
@@ -124,7 +128,7 @@ Let's proceed:
 
     ![ImageLabel](./Images/MOD01_2017-10-26_11_07_53.png)
 
-    > TODO: describe
+    > **Instructor Sync Point:** Describe `NavigationView` and `NavViewEx`
 
 1. Add new pages in the `Views` folder
 
@@ -138,7 +142,7 @@ Let's proceed:
 
 1. Add the following namespace and property **to each new page**. Be sure to change the value of the `Header` property to match the name of the xaml page, as below: 
 
-    > TODO: describe
+    > **Instructor Sync Point:** Discuss `NavProperties` attached properties
 
     ```xml
     xmlns:controls="using:GitHubBrowser.Controls"
@@ -151,11 +155,11 @@ Let's proceed:
 
 1. Add the following namespaces and `x:Name` directive to `ShellPage`
 
-    > TODO: describe
+    > **Instructor Sync Point:** Discuss `x:Name` Page property and element binding
 
     ```xml
     xmlns:controls="using:GitHubBrowser.Controls"
-    xmlns:views="using:GitHubBrowser.Views" 
+    xmlns:views="using:GitHubBrowser.Views"
     x:Name="ThisPage"
     ```
 
