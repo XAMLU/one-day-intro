@@ -193,3 +193,5 @@ In this task, you will be adding a UI to the `SettingsPage` that will interact w
 So in this module the app gained some real functionality! You added the ability to search GitHub for repositories, chose the default repository that the app would interact with, and added a settings page that allowed you to clear the default repository.
 
 In the next module, you will see how to ensure that the app responds approproiately based upon changes to the login status and whether a default repository has been set.
+
+[Start Module 4](./Module4.md)
