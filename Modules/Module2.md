@@ -198,3 +198,5 @@ In the last task, you added the ability to login, but right now you need to hit 
 ## Summary
 
 Phew - you covered a lot of ground in this module! You intergrated a 3rd party library, wrapped it with your own service to make it easier to use and then added the ability to save settings. You then added a UI for login and learnt one way to make the UI respond to changes in the application state, and then you learnt how the `Loaded` event can be used to run code when a `Page` is displayed.
+
+[Start Module 3](./Module3.md)
