@@ -134,3 +134,5 @@ In this task, you will update the `IssuesPage` UI to display the repository issu
 In this module you implemented the UI and logic to display the open and closed issues for a repository. You added resources and datatemplates and used them in creating a Master/Detail view.
 
 In the next module you will add functionality to create a new issue.
+
+[Start Module 6](./Module6.md)
