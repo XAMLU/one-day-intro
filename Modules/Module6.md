@@ -1,6 +1,7 @@
 # Module 6
 
-In this module you will add functionality to create a new issue.
+In this the final module you will add a `NavigationService` that will ease navigation to a new `CreateIssuePage`. You will add property validation so that you can apply business rules to data entry and finally, you will add a button that will allow the user to create an issue on the default repository.  
+
 ### TOC
 
 1. [Navigation Service](#navigationservice)
