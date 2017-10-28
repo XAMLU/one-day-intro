@@ -246,3 +246,5 @@ Let's proceed:
 In this module, you created the basic UWP application. You modified the app so that instead of creating a `Frame` and navigating to `MainPage`, the app just creates an instance of `ShellPage` and loads it directly into the application window content. You then changed the application default theme to Dark. You then went on to adding the `NavViewEx` control and implemented a very basic navigation to essentially empty pages.
 
 Congratulations - Module 1 is complete. In the next module you will add authentication to the app and implement some services.
+
+[Start Module 2](./Module2.md)
