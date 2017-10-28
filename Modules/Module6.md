@@ -1,13 +1,15 @@
 # Module 6
 
-**TOC**
+In this module you will add functionality to create a new issue.
+### TOC
 
 1. [Navigation Service](#navigationservice)
-1. [Add Validation Property Helper](#validation)
+1. [Add Validation Property Helper and Create an Issue](#validation)
 1. [Global Button](#globalbutton)
-1. [Add Create Issue](#addcreateissue)
 
 ## Task 1: Create and setup a Navigation Service<a name="navigationservice"></a>
+
+In this task you will introduce a `NavigationService` and you will see how it centralizes navigation interaction.
 
 1. Create `NavigationService.cs` in the `Services` folder.
 
@@ -32,7 +34,7 @@
   }
   ```
 
-1. Add  `using GitHubBrowser.Controls;` to our navigation service class
+1. Add `using GitHubBrowser.Controls;` to our navigation service class
 
   > Note: you can use the refactoring tool by hitting `CTRL+.`
 
@@ -48,9 +50,11 @@
 
   ![ImageLabel](./Images/MOD06_2017-10-27_14_34_06.png)
 
-  > TODO: discuss, why not until now?
+  > **Instructor Sync Point:** Discuss, why not setup navigation service until now?
 
-## Task 2: Add Validation Property Helper<a name="validation"></a>
+## Task 2: Add Validation Property Helper and Create an Issue<a name="validation"></a>
+
+In this task, you will add a validation property helper and see how to add validation to the Create Issue view model and UI.
 
 1. Copy `ValidationProperty.cs` into the `ViewModels` folder.
 
@@ -58,13 +62,12 @@
 
     ![ImageLabel](./Images/MOD06_2017-10-27_14_18_26.png)
 
-## Task 3: Add Create Issue<a name="createissue"></a>
 
 1. Copy `CreateIssuePageViewModel.cs` into the `ViewModels` folder.
 
     > Find the `cs` file in `Module6/Files`
 
-    > TODO discuss validation property
+  > **Instructor Sync Point:** Discuss validation property and the problems of validation
 
 1. Create `CreateIssuePage.xaml` in the `Views` folder.
 
@@ -106,7 +109,7 @@
 
   > Note: alternatively, this snippet can be also found in resources `Module6/Files/CreateIssuePage.xaml`
 
-  > TODO: discuss navigation view (line 50)
+  > **Instructor Sync Point:** Discuss navigation view (line 50)
 
 1. Ensure there is a namespace reference to `Controls` and `ViewModels`
 
@@ -117,7 +120,9 @@
 
   ![ImageLabel](./Images/MOD06_2017-10-27_14_47_13.png)
 
-## Task 4: Global Button<a name="globalbutton"></a>
+## Task 3: Global Button<a name="globalbutton"></a>
+
+In this task, you will add a global "create issue" button to the page title command bar. This button will navigate the user to a new `CreateIssuePage` that will show a method for validating data input in the UI.
 
 1. Open `ShellPage.xaml`
 
@@ -145,7 +150,7 @@
 
   ![ImageLabel](./Images/MOD06_2017-10-27_14_49_26.png)
 
-  > TODO: discuss elemeting binding
+  > **Instructor SyncPoint:** Discuss element binding
 
 1. Test the app, hit `F5`
 
@@ -164,4 +169,14 @@
 
   ![ImageLabel](./Images/MOD06_2017-10-27_14_51_06.png)
 
+## Summary
 
+And that's it - the end of the module and the end of the course! In this module you added the feature to create an issue for the default repository and immplemented an approach for validating data input. Over the 6 modules of the course, you built an app that:
+
+* Leverages NuGet packages
+* Integrates with 3rd party web apis
+* Authenticated using OAuth
+* Built a number of XAML layouts for the UI
+* Implemented an MVVM architecture
+* Utilized patterns for loose-coupling such as data-binding, messages and commands.
+* Implemented a custom data input validation approach

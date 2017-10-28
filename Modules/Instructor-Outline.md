@@ -83,10 +83,14 @@ The course is broken into a number of sections:
             > Show the source for the `GitHubClient`?
         * Global back button & back stack
     * Module
-        * Add NavigationSerivce
+        * Add NavigationService
+            * Discuss, why not setup navigation service until now?
         * Add Validation Property Helper
+            * Discuss validation property and the problems of validation
         * Add create issue button to global nav bar
+            * Discuss navigation view (line 50)
         * Add Create Issue Page
+            * Discuss element binding
 1. Additional topics
     * Telemetry
     * Deployment
