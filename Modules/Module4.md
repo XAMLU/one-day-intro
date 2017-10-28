@@ -257,3 +257,5 @@ In this task, we will be adding the `MessageService` and making changes througho
 In this module you refactored the application to leverage messaging and learnt how a message can be published in one area of the applications and be received in other areas, without either the publisher or the subscriber depending on each other.
 
 In the next module, you will add functionality that will display the open and closed issues for the default repository.
+
+[Start Module 5](./Module5.md)
