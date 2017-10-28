@@ -9,7 +9,9 @@ In this module, you will add a MasterDetail view from the UWP Toolkit and implem
 
 ## Task 1: Add a reference to the UWP Toolkit NuGet package<a name="uwptoolkit"></a>
 
-1. Add a reference to the `UWP Toolkit` NuGet package 
+In this task, you will add the `UWP Toolkit` package to the app. 
+
+1. Add a reference to the `UWP Toolkit` NuGet package.
 
     > This library introduces a set of controls built by Microsoft and the XAML community. The library includes the `MasterDetailView` which looks a little like the Mail app, and we will use later in this module. 
 
@@ -17,7 +19,7 @@ In this module, you will add a MasterDetail view from the UWP Toolkit and implem
 
     1. Open the NuGet Package Manager Console
     
-    > (reusing image from module 2) C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26_12_26_42.png)
+    ![ImageLabel](./Images/MOD02_2017-10-26_12_26_42.png)
 
     2. Type the following into the console: `Install-Package Microsoft.Toolkit.Uwp.UI.Controls`
 
@@ -25,24 +27,22 @@ In this module, you will add a MasterDetail view from the UWP Toolkit and implem
 
 ## Task 2: Update Issues Logic<a name="updatelogic"></a>
 
+In this task, you will add the logic for the `IssuesPage` and stub out the `Pivot` UI that will be used to display open or closed issues.
+
 1. Copy `IssueViewModel.cs` and `IssuesPageViewModel.cs` into the `ViewModels` folder.
 
     > Find both `cs` files in `Module5/Files`
 
     ![ImageLabel](./Images/MOD05_2017-10-26_17_16_07.png)
 
-    > TODO discuss ObservableCollection
-
-    > TODO discuss item view-models
-
-    > TODO discuss LINQ
+    > **Instructor Sync Point:** Discuss ObservableCollection, item view-models, LINQ
 
 1. Add a reference to `IssuesPageViewModel` in the `IssuesPage.xaml` markup, by setting the value of `Page.DataContext`, shown below. Ensure it has the name `ViewModel`.
 
     ```xml
     <Page.DataContext>
         <viewmodels:IssuesPageViewModel x:Name="ViewModel"/>
-    </Page.DataContext> 
+    </Page.DataContext>
     ```
 
     The XAML above will require a new xml namespace declaration to your ViewModels namespace, as shown in the image below.
@@ -87,13 +87,15 @@ In this module, you will add a MasterDetail view from the UWP Toolkit and implem
 
 ## Task 3: Update Issues UI<a name="updateui"></a>
 
+In this task, you will update the `IssuesPage` UI to display the repository issues.
+
 1. Make a control-level resources available inside the `Pivot`, but adding `ListItemTemplate` and `ItemDetailTemplate` in the `Resources` property. This is quite a bit of XAML, so copy it from the snippet file.
 
     A DataTemplate is a XAML type used to define the visual for a specific data type. In this case, we are defining the visual for an Issue while in a list and an Issue when displayed in detail. 
 
     > This snippet can be  found in resources `Module5/Files/IssuesPage_PivotResources_Snippet.txt`
 
-    > TODO: discuss resources
+    > **Instructor Sync Point:** Discuss resources and templates
 
 1. Inside the first `PivotItem` with its `Header` set to 'Open Issues" we will replace the entire block with a block (below) containing a `MasterDetailView`, from the UWP Toolkit, which we will use to display issues and issue detail. 
 
@@ -127,4 +129,8 @@ In this module, you will add a MasterDetail view from the UWP Toolkit and implem
     </PivotItem>
     ```
 
-// end
+## Summary
+
+In this module you implemented the UI and logic to display the open and closed issues for a repository. You added resources and datatemplates and used them in creating a Master/Detail view.
+
+In the next module you will add functionality to create a new issue.

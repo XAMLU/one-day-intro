@@ -69,8 +69,12 @@ The course is broken into a number of sections:
         * Styles & Resources
     * Module
         * UWP Toolkit NuGet Package
+            * Discuss ObservableCollection
+            * Discuss item view-models
+            * Discuss LINQ
         * Update Issues Logic
         * Update Issues UI
+            * Discuss resources and templates.
 1. Data entry and field/form validation
     * Discuss
         * What is validation and why do we need it?
