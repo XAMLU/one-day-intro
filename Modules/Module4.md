@@ -1,17 +1,18 @@
 # Module 4
-In this module you will implement messaging and command patterns.
 
-**TOC**
+In this module you will explore some patterns for creating better separation of concerns between the UI and Logic and between separate areas of the application. To achieve this you will be using messaging and commands, both of which are implemented in the `MVVMLighLib` package you added earlier.
+
+### TOC
 1. [Implement messaging & commands](#messages)
+
+In this task, we will be adding the `MessageService` and making changes throughout the app to use messages. The `MessageService` is a simplified wrapper of the MVVMLight `MessengerService` intended specifically for use in this project. As with all View Services, our `MessageService` does not expose every feature of the underlying library, it simply meets the needs of this particular project.
 
 ### Task 1: Implement Messaging & Commanding<a name="messages"></a>
 
 1. Copy `MessageService.cs` to the `Services` folder.
 
     > Note: Most memory leaks in C# are from event handlers across object scopes. Objects with a resulting hard reference cannot be removed from memory by garbage collection. Using a messaging service, like the MVVMLight `MessengerService` we use here, developers can listen for messages (called subscribing) instead of events, this loose coupling side-stepping the necessity for hard references between objects. Messaging is a common pattern in XAML apps using MVVM.
-        
-    `MessageService` is a simplified wrapper of the MVVMLight `MessengerService` intended specifically for use in this project. As with all View Services, our `MessageService` does not expose every feature of the underlying library, it simply meets the needs of this particular project. 
-    
+
     > Find the `cs` file in `Module4/Files`
 
     ![ImageLabel](./Images/MOD04_2017-10-26_15_55_02.png)
@@ -241,7 +242,7 @@ In this module you will implement messaging and command patterns.
             }
         } 
         ```
-        
+
 1. Test the app, hit `F5`
 
     1. In `Settings`, clear the default repository.
@@ -251,4 +252,8 @@ In this module you will implement messaging and command patterns.
 
     ![ImageLabel](./Images/MOD04_2017-10-26_16_49_50.png)
 
-// end
+## Summary
+
+In this module you refactored the application to leverage messaging and learnt how a message can be published in one area of the applications and be received in other areas, without either the publisher or the subscriber depending on each other.
+
+In the next module, you will add functionality that will display the open and closed issues for the default repository.
