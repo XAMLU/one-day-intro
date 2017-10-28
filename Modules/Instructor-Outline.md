@@ -44,8 +44,15 @@ The course is broken into a number of sections:
     * Module
         * Add MVVMLight
         * Add a ViewModel
+            * Walk-through the `HomePageViewModel`
+            * Talk about Separation of Concerns
+            * Could talk about Command pattern here
         * Implement Repository Search
+            * Discuss Converters and implicit conversion
+            * Discuss `ListView` and `RelativePanel`
         * Implement Settings
+            * Discuss the `SettingsService`
+            * Discuss `DesignModeEnabled` & `RelayCommand`
 1. Messaging and Commanding
     * Discuss
         * Messaging

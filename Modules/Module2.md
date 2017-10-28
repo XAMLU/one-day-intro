@@ -1,7 +1,7 @@
 # Module 2
 In this module, you will implement OAuth authentication to GitHub and add some essential services to the app.
 
-**TOC**
+### TOC
 1. [Get your app's callback URI](#callback)
 1. [Setup your app in Github](#github)
 1. [Add services to your app](#services)

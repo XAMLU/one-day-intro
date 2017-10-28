@@ -1,28 +1,29 @@
 # Module 3
 In this module, you will add a Model-View-ViewModel implementation to the application, implement a simple settings service and add a repository search function.
 
-**TOC**
+### TOC
 1. [Add MVVMLight NuGet package](#mvvmlight)
 1. [Add a ViewModel](#viewmodel)
 1. [Implement Search](#search)
 1. [Implement Settings](#settings)
 
-### Task 1: Add a reference to the MVVMLight NuGet package<a name="mvvmlight"></a>
+## Task 1: Add a reference to the MVVMLight NuGet package<a name="mvvmlight"></a>
 
-1. Add a reference to the `MVVM Light` NuGet package 
+In this task, you will add the `MVVMLightLibs` NuGet package.This library introduces a basic Model View View-Model (MVVM) framework allowing your app to implement `INotifyPropertyChanged` with a common `ObservableObject` base class, use a concrete `RelayCommand` implementing `ICommand`, and providing a Messenger service (used in a later module).
 
-    > This library introduces a basic Model View View-Model (MVVM) framework allowing your app to implement `INotifyPropertyChanged` with a common `ObservableObject` base class, use a concrete `RelayCommand` implementing `ICommand`, and providing a Messenger service (used in a later module).
+1. Add a reference to the `MVVM Light` NuGet package.
 
     1. Open the NuGet Package Manager Console
-    
-    > (reusing image from module 2) C:\Users\jnixon\git.repos\one-day-intro\Modules\Images\MOD02_2017-10-26_12_26_42.png)
 
-    2. Type the following into the console: `Install-Package MvvmLightLibs`
+    ![ImageLabel](./Images/MOD02_2017-10-26_12_26_42.png)
+
+    1. Type the following into the console: `Install-Package MvvmLightLibs`
 
     ![ImageLabel](./Images/MOD03_2017-10-26_13_55_24.png)
 
-### Task 2: Add a ViewModel<a name="viewmodel"></a>
-In this task, you will move code from the `HomePage.xaml.cs` code-behind to `HomePageViewModel.cs`
+## Task 2: Add a ViewModel<a name="viewmodel"></a>
+
+In this task, you will move code from the `HomePage.xaml.cs` code-behind and create a ViewModel - `HomePageViewModel.cs`. You will see how binding makes this easy.
 
 1. In Visual Studio, add a folder `ViewModels` at the root level of your project.
 
@@ -64,10 +65,10 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
 
     ![ImageLabel](./Images/MOD03_2017-10-26_14_10_56.png)
 
-1. We can now remove the unused code in the `HomePage.xaml.cs` code-behind file. 
+1. We can now remove the unused code in the `HomePage.xaml.cs` code-behind file:
 
-    1. Open `HonmePage.xaml.cs`
-    1. Remove `INotifyPropertyChanged` form the class declaration.
+    1. Open `HomePage.xaml.cs`
+    1. Remove `INotifyPropertyChanged` from the class declaration.
     1. Modify the `HomePage_Loaded` handler to call `ViewModel.LoginAsync()`
     1. Delete the `PropertyChanged` event.
     1. Delete all the properties.
@@ -77,11 +78,11 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
 
 1. Run the app, hit `F5`.
 
-    > TODO: walk-through view-model
-    > TODO: talk about seperation of concerns
-    > TODO: command
+    > **Instructor Sync Point:** Walkthough ViewModel, Separation of Concerns and Command Pattern
 
-### Task 3: Implement Search<a name="search"></a>
+## Task 3: Implement Search<a name="search"></a>
+
+So far, we haven't really added an real functionality - that changes now! In this task we will add the feature to be able to search GitHub for repositories that match a supplied search term.
 
 1. In Visual Studio, add a folder `Converters` at the root level of your project.
 
@@ -103,15 +104,15 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
 
     ![ImageLabel](./Images/MOD03_2017-10-26_14_27_34.png)
 
+    > **Instructor Sync Point:** Discuss Converters and implicit conversion
+
 1. Replaced `LoggedInUI` with different XAML
 
     > The current `LoggedInUI` block shows only the name of the current user in a single `TextBlock`. The new snippet does the same, but adds search capabilities to find a GitHub repository and mark it as the default repository for other operations in the app.
 
-    > This  snippet can be found in resources `Module3/Files/HomePage_LoggedinUi_Snippet.txt`
+    > This snippet can be found in resources `Module3/Files/HomePage_LoggedinUi_Snippet.txt`
 
-    > TODO: discuss ListView
-
-    > TODO: discuss RelativePanel
+    > **Instructor Sync Point:** Discuss `ListView` and `RelativePanel`
 
 1. Run the app, hit `F5`
 
@@ -127,17 +128,17 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
     ![ImageLabel](./Images/MOD03_2017-10-26_14_31_27.png)
 
 
-### Task 4: Implement Settings<a name="settings"></a>
+## Task 4: Implement Settings<a name="settings"></a>
 
-> TODO : discuss Settings Service
+In this task, you will be adding a UI to the `SettingsPage` that will interact with the `SettingsService` so that you can update values that are persisted between application sessions. As you build the UI and the associated ViewModel, you will see how you can handle special cases for when a `Page` is being viewed in a designer or during run time.
+
+ > **Instructor Sync Point:** Discuss Settings Service
 
 1. Copy `SettingsPageViewModel.cs` to the `ViewModels` folder.
 
     > Find the file in `Module3/Files`
 
-    > TODO: discuss DesignModeEnabled
-
-    > TODO: discuss RelayCommand
+ > **Instructor Sync Point:** Discuss `DesignModeEnabled` & `RelayCommand`
 
 1. Open `SettingsPage.xaml`
 
@@ -161,7 +162,7 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
 
     ```xml
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-      
+
     </Grid> 
     ```
 
@@ -186,3 +187,9 @@ In this task, you will move code from the `HomePage.xaml.cs` code-behind to `Hom
     1. Ensure no default repository is set
 
     ![ImageLabel](./Images/MOD04_2017-10-26_15_24_27.png)
+
+## Summary
+
+So in this module the app gained some real functionality! You added the ability to search GitHub for repositories, chose the default repository that the app would interact with, and added a settings page that allowed you to clear the default repository.
+
+In the next module, you will see how to ensure that the app responds approproiately based upon changes to the login status and whether a default repository has been set.
